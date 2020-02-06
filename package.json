@@ -1,0 +1,24 @@
+{
+  "name": "udacity--front-end--developer--degree",
+  "version": "1.0.0",
+  "description": "Front-End Developer program with Udacity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ecDusty/Udacity-FEND-Projects.git"
+  },
+  "keywords": [
+    "Training",
+    "Udacity",
+    "FEND"
+  ],
+  "author": "Erin Macalligan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecDusty/Udacity-FEND-Projects/issues"
+  },
+  "homepage": "https://github.com/ecDusty/Udacity-FEND-Projects#readme"
+}
