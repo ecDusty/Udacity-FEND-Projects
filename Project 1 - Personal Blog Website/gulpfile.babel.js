@@ -36,7 +36,7 @@ import colors from 'ansi-colors';
  */
 
 const config = {
-	dir: './src/',
+	dir: './app/',
 	dist: './dist/',
 	env: parseArgs(process.argv).env,
 	browserSyncServerDir: ['./dist'],
@@ -44,6 +44,7 @@ const config = {
 		server: config.browserSyncServerDir,
 		https: false,
 	},
+
 };
 
 /**
@@ -72,7 +73,7 @@ const initBrowserSync = () => browserSync.init(config.browserSync);
  */
 const css =
 	() => src(`${config.inputDir}/**/*.scss`)
-		.pipe(gulpif(global.isWatching, cached('css')))
+		.pipe(gulpif(global.syncWatching, cached('css')))
 		.pipe(sassInheritance({
 			dir: `${config.inputDir}`
 		}))
@@ -96,21 +97,77 @@ const css =
 						sound: true,
 					});
 					this.emit('end');
-				}),
-		)
+				}))
 		.pipe(autoprefixer())
-		.pipe(
-			(config.env === 'production')
-				? sass({
-					outputStyle: 'compressed',
-				})
-				: nada(),
-		)
-		.pipe(
-			(config.env === 'production')
-				? nada()
-				: sourcemaps.write()
-		)
+		.pipe(config.env === 'production'
+			? sass({ outputStyle: 'compressed', })
+			: nada())
+		.pipe(config.env === 'production'
+			? nada()
+			: sourcemaps.write())
 		.pipe(flatten())
 		.pipe(dest(`${config.dist}css/`))
-		.pipe(config.env === 'local' ? browserSync.stream() : nada());
+		.pipe(config.env === 'localDev'
+			? browserSync.stream()
+			: nada());
+
+
+/**
+ * JAVASCRIPT COMPILING
+ */
+const js =
+	() => src(`${config.inputDir}/js/*.js`)
+		.pipe(bro({
+			debug: true,
+			transform: [
+				babelify.configure({
+					presets: [
+						[
+							'@babel/preset-env',
+							{ useBuiltIns: 'usage' }
+						]
+					]
+				})
+			],
+		}))
+		.pipe(gulpif(global.syncWatching, cached('js')))
+		.pipe(buffer())
+		.pipe((config.env === 'production')
+			? uglify()
+			: nada())
+		.pipe(dest(`${config.dist}js/`))
+		.pipe(config.env === 'localDev'
+			? browserSync.stream()
+			: nada());
+
+
+/**
+ * IMAGE COMPILING
+ * Images are only minified for production, not local development
+ */
+
+const images =
+	() => src(`${config.inputDir}/**/*.{jpg,jpeg,svg,png,gif}`)
+		.pipe(config.env === 'localDev'
+			? imagemin({
+				progressive: true,
+				svgoPlugins: [{
+					removeViewBox: false,
+				}],
+				use: [pngquant()],
+			})
+			: nada())
+		.pipe(flatten())
+		.pipe(dest(`${config.dist}img/`))
+		.pipe(config.env === 'local'
+			? browserSync.stream()
+			: nada());
+
+
+/**
+ * HTML compiling
+ * The preprocessor removes development sections
+ */
+
+const html =
+	() => src(`${config.inputDir}/**/*.html`)
