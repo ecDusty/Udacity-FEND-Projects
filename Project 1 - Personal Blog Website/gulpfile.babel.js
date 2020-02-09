@@ -36,7 +36,7 @@ import colors from 'ansi-colors';
  */
 
 const config = {
-	dir: './app/',
+	app: './app/',
 	dist: './dist/',
 	env: !parseArgs(process.argv).env ? 'local' : parseArgs(process.argv).env,
 	browserSyncServerDir: ['./dist'],
@@ -51,7 +51,7 @@ config.browserSync = {
 
 /**
  * Terminal Log Configuration
- * styles which will make the Gulp log easier to read
+ * styles which will make the Gulp easier to read
  */
 
 log(colors.cyan('config.env: '), config.env);
@@ -74,10 +74,10 @@ const initBrowserSync = () => browserSync.init(config.browserSync);
  * Styles
  */
 const css =
-	() => src(`${config.inputDir}/**/*.scss`)
+	() => src(`${config.app}/**/*.scss`)
 		.pipe(gulpif(global.syncWatching, cached('css')))
 		.pipe(sassInheritance({
-			dir: `${config.inputDir}`
+			dir: `${config.app}`
 		}))
 		.pipe(
 			(config.env === 'production')
@@ -118,7 +118,7 @@ const css =
  * JAVASCRIPT COMPILING
  */
 const js =
-	() => src(`${config.inputDir}/js/*.js`)
+	() => src(`${config.app}/js/*.js`)
 		.pipe(bro({
 			debug: true,
 			transform: [
@@ -149,7 +149,7 @@ const js =
  */
 
 const images =
-	() => src(`${config.inputDir}/**/*.{jpg,jpeg,svg,png,gif}`)
+	() => src(`${config.app}/**/*.{jpg,jpeg,svg,png,gif}`)
 		.pipe(config.env === 'localDev'
 			? imagemin({
 				progressive: true,
@@ -172,7 +172,7 @@ const images =
  */
 
 const html =
-	() => src(`${config.inputDir}/**/*.html`)
+	() => src(`${config.app}/**/*.html`)
 		.pipe(flatten())
 		.pipe(dest(`${config.dist}`))
 
@@ -182,7 +182,7 @@ const html =
  */
 
 const fonts =
-	() => src(`${config.inputDir}/**/*.{}`)
+	() => src(`${config.app}/**/*.{}`)
 
 /**
  * Clean up files & folders
@@ -199,8 +199,8 @@ const cleanUp = () => del(`${config.dist}`);
 function watchFiles() {
 	global.syncWatching = true;
 	watch(`${config.browserSyncServerDir[0]}**/*.html`, series(html));
-	watch(`${config.inputDir}**/*.scss`, series(css));
-	watch(`${config.inputDir}**/*.js`, series(js));
+	watch(`${config.app}**/*.scss`, series(css));
+	watch(`${config.app}**/*.js`, series(js));
 }
 
 /**
@@ -217,6 +217,5 @@ function watchFiles() {
 //  exports.production = series();
 
  exports.html = series(
-	cleanUp,
 	parallel(html)
  );
