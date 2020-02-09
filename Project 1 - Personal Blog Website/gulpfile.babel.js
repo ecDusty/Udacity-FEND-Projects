@@ -38,14 +38,16 @@ import colors from 'ansi-colors';
 const config = {
 	dir: './app/',
 	dist: './dist/',
-	env: parseArgs(process.argv).env,
+	env: !parseArgs(process.argv).env ? 'local' : parseArgs(process.argv).env,
 	browserSyncServerDir: ['./dist'],
-	browserSync: {
-		server: config.browserSyncServerDir,
-		https: false,
-	},
-
+	browserSync: {},
+	syncWatching: false,
 };
+
+config.browserSync = {
+	server: config.browserSyncServerDir,
+	https: false,
+}
 
 /**
  * Terminal Log Configuration
@@ -171,3 +173,50 @@ const images =
 
 const html =
 	() => src(`${config.inputDir}/**/*.html`)
+		.pipe(flatten())
+		.pipe(dest(`${config.dist}`))
+
+
+/**
+ * Fonts
+ */
+
+const fonts =
+	() => src(`${config.inputDir}/**/*.{}`)
+
+/**
+ * Clean up files & folders
+ */
+
+const cleanUp = () => del(`${config.dist}`);
+
+
+
+/**
+* Watch
+*/
+
+function watchFiles() {
+	global.syncWatching = true;
+	watch(`${config.browserSyncServerDir[0]}**/*.html`, series(html));
+	watch(`${config.inputDir}**/*.scss`, series(css));
+	watch(`${config.inputDir}**/*.js`, series(js));
+}
+
+/**
+ * Gulp Executables
+ * These are the gulp functions
+ */
+
+ exports.default = series(
+	 cleanUp,
+	 parallel(css, js, html, images),
+	 parallel(watchFiles, initBrowserSync)
+);
+
+//  exports.production = series();
+
+ exports.html = series(
+	cleanUp,
+	parallel(html)
+ );

@@ -11,19 +11,19 @@
 		<meta name="description" content="">
 	{% endblock %}
 
-	{% block css %}
-	{% endblock %}
+	{% include "components/_css.njk" %}
+	{% include "components/_scripts.njk" %}
 </head>
 <body>
 	{% block header %}
 	{% endblock %}
+
 	<div class="main">
 		{% block content %} {% endblock %}
 	</div>
-	{% include "parts/_footer.html" %}
+	{% include "components/_footer.html" %}
 
 	<!-- Common scripts placeholder. -->
-	{% block scripts %}
-	{% endblock %}
+	{% include "components/_scripts" %}
 </body>
 </html>
