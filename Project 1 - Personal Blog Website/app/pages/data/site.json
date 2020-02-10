@@ -1,6 +1,32 @@
 {
-	"title": "ecDusty's Web Dev Domain, Hong Kong",
+	"title": "Unlikely IT's Web Dev Domain, Hong Kong",
 	"site-description": "Erin Macalligan's web development profile",
 	"mainBlog": [],
-	"nav": []
+	"mainNavs": [
+		{
+			"name":"home",
+			"url":"/"
+		},
+		{
+			"name":"blog",
+			"url":"/blog.html",
+			"folder": false
+		},
+		{
+			"name":"projects",
+			"url":"/projects.html",
+			"folder":true,
+			"folderItems": [
+				{ "name":"Project 1", "url":"/" }
+			]
+		}
+
+	],
+	"header": {
+		"cta": {
+			"show": false,
+			"text": "Get Help",
+			"link": "/get-help.html"
+		}
+	}
 }

@@ -1,19 +1,18 @@
-{% macro renderHeader(activePage='home') %}
+{% macro renderHeader(activePage='home', mainNav=[]) %}
 <header class="header">
-  <div class="logo">
-    <a href="/">
-      <img src="/img/logo.png" alt="logo" />
-    </a>
-  </div>
-  <nav class="navigation">
-    <ul class="navigation-list">
-      <li class="navigation-list-item {%if activePage == 'index' %}current{% endif %}">
-        <a href="/" class="navigation-list-link">Index</a>
-      </li>
-      <li class="navigation-list-item {%if activePage == '404' %}current{% endif %}">
-        <a href="/404.html" class="navigation-list-link">404 Page</a>
-      </li>
-    </ul>
-  </nav>
+	<div class="logo">
+	<a href="/">
+		<img src="/img/logo.png" alt="logo" />
+	</a>
+	</div>
+	<nav class="nav">
+		<ul class="nav-list">
+		{% for item in mainNav %}
+			<li class="nav-list-item {%if activePage == item.name %}current{% endif %}">
+			<a href="{{ item.url }} " class="nav-list-link">{{ item.name }}</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</nav>
 </header>
 {% endmacro %}

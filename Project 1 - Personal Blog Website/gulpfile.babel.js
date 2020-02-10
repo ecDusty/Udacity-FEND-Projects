@@ -214,6 +214,7 @@ const html =
 		}))
 		.pipe(config.env === 'localDev' ? nada() : htmlmin({ collapseWhitespace: true }))
 		.pipe(dest(`${config.dist}`))
+		.pipe(config.env === 'localDev' ? browserSync.stream() : nada())
 
 
 /**
@@ -237,7 +238,15 @@ const cleanUp = () => del(`${config.dist}`);
 */
 function watchFiles() {
 	global.syncWatching = true;
-	watch(`${config.app}**/*.{html,njk,nunjucks}`, series(html));
+	watch([
+			`${config.app}**/*.html`,
+			`${config.app}**/*.njk`,
+			`${config.app}**/**/*.njk`,
+			`${config.app}**/*.nunjucks`,
+			`${config.nunjucks.data}*.json`
+		],
+		series(html)
+	);
 	watch(`${config.app}**/*.scss`, series(css));
 	watch(`${config.app}**/*.js`, series(js));
 }

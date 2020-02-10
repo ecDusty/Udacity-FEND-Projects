@@ -1,17 +1,17 @@
 {% extends "../templates/_layout.njk" %}
-{% import '../templates/parts/header/_header.njk' as header %}
+{% import '../templates/parts/header/_header.njk' as header %} -->
 
 {% block head %}
 	<title>{{ title }}</title>
 	<meta name="keywords" content="">
-	<meta name="description" content="{{ site-description }}">
+	<meta name="description" content="">
 {% endblock %}
 
 {% block header %}
-{{ header.renderHeader('home', mainNavs) }}
+{{ header.renderHeader('blog', mainNavs) }}
 {% endblock %}
 
 {% block content %}
 I'm trying to add more content to nunjucks /n TESTING!
-<h1>HELP ME OUT!</h1>
+<h1>The Blog</h1>
 {% endblock %}
