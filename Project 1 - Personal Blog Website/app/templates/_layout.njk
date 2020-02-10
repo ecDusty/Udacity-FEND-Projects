@@ -4,15 +4,19 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="/css/style.css" />
 	{% block head %}
 		<title>My site</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
 	{% endblock %}
 
-	{% include "components/_css.njk" %}
-	{% include "components/_scripts.njk" %}
+	<!-- Requied Preconnect -->
+
+	<!-- Common styles placeholder. -->
+	{% include "parts/styles/_css.njk" %}
+
+	<!-- Common scripts placeholder. -->
+	{% include "parts/scripts/_scripts.njk" %}
 </head>
 <body>
 	{% block header %}
@@ -21,9 +25,6 @@
 	<div class="main">
 		{% block content %} {% endblock %}
 	</div>
-	{% include "components/_footer.html" %}
-
-	<!-- Common scripts placeholder. -->
-	{% include "components/_scripts" %}
+	{% include "parts/footer/_footer.njk" %}
 </body>
 </html>

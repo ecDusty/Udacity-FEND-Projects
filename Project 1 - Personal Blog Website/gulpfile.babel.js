@@ -11,13 +11,14 @@ import { src, dest, parallel, series, watch } from 'gulp';
 import del from 'del';
 import uglify from 'gulp-uglify';
 import sass from 'gulp-sass';
+import data from 'gulp-data';
 import autoprefixer from 'gulp-autoprefixer';
 import flatten from 'gulp-flatten';
 import browserSync from 'browser-sync';
 import buffer from 'vinyl-buffer';
 import sourcemaps from 'gulp-sourcemaps';
 import notifier from 'node-notifier';
-import sftp from 'gulp-sftp-up4';
+// import sftp from 'gulp-sftp-up4';
 import fs from 'fs';
 import parseArgs from 'minimist';
 import through from 'through2';
@@ -30,32 +31,63 @@ import imagemin from 'gulp-imagemin';
 import pngquant from 'imagemin-pngquant';
 import log from 'fancy-log';
 import colors from 'ansi-colors';
+import htmlmin from 'gulp-htmlmin'
+import nunjucksRender from 'gulp-nunjucks-render';
+
+
 /**
  * Configuration Object
  * any arguments & settings for gulp to run
  */
-
 const config = {
 	app: './app/',
 	dist: './dist/',
-	env: !parseArgs(process.argv).env ? 'local' : parseArgs(process.argv).env,
+	env: !parseArgs(process.argv).env ? 'localDev' : parseArgs(process.argv).env,
 	browserSyncServerDir: ['./dist'],
 	browserSync: {},
 	syncWatching: false,
+	nunjucks: {}
 };
 
+// Config BrowserSync config object
 config.browserSync = {
 	server: config.browserSyncServerDir,
 	https: false,
 }
 
+// Website JSON data location
+config.nunjucks.data = `${config.app}pages/data/`;
+
+// Nunjucks settings
+config.nunjucks.templates = [`${config.app}templates`];
+
 /**
  * Terminal Log Configuration
  * styles which will make the Gulp easier to read
  */
-
 log(colors.cyan('config.env: '), config.env);
 log(colors.cyan('config.browserSync: '), config.browserSync);
+
+
+/**
+ * All Function Names Declaration
+ * @nada - Empty function that always the stream content to continue
+ * @initBrowserSync - Initializes BrowserSync, creating a local server
+ * 		to host the development files, which gives you the ability to
+ * 		test your website build
+ * @sass - Compiles all the root SASS files, to produce the usable CSS
+ * @js - Compiles all the root JS files, to produce the usable main.js file.
+ * 		This also initiates
+ * @images - For 'localDev', this moves images to 'dist/img/' folder. The reason
+ * 		for this is to save, and shorten processing time. With
+ * 		'production', the images will be minified and moved
+ * @html - Compiles all the nunjucks templates into usable HTML pages, and
+ * 		places them into the base 'dist/' folder for hosting.
+ * @fonts - Moves all fonts to base font folder. 'dist/fonts'
+ * @cleanUp - Deletes the dist folder. Helpful to ensure all files are only the
+ * 		most updated version, and saving space when not actively developing.
+ * @watchFiles - Watch for source file changes, and trigger a recreate & resync.
+ */
 
 
 /**
@@ -147,7 +179,6 @@ const js =
  * IMAGE COMPILING
  * Images are only minified for production, not local development
  */
-
 const images =
 	() => src(`${config.app}/**/*.{jpg,jpeg,svg,png,gif}`)
 		.pipe(config.env === 'localDev'
@@ -161,7 +192,7 @@ const images =
 			: nada())
 		.pipe(flatten())
 		.pipe(dest(`${config.dist}img/`))
-		.pipe(config.env === 'local'
+		.pipe(config.env === 'localDev'
 			? browserSync.stream()
 			: nada());
 
@@ -170,52 +201,74 @@ const images =
  * HTML compiling
  * The preprocessor removes development sections
  */
+const htmlData = () => {
+	const mainData = JSON.parse(fs.readFileSync(`${config.nunjucks.data}site.json`));
+	return mainData;
+}
 
 const html =
-	() => src(`${config.app}/**/*.html`)
-		.pipe(flatten())
+	() => src(`${config.app}/pages/**/*.html`) // .pipe(flatten())
+		.pipe(data(JSON.parse(fs.readFileSync(`${config.nunjucks.data}site.json`))))
+		.pipe(nunjucksRender({
+			path: config.nunjucks.templates
+		}))
+		.pipe(config.env === 'localDev' ? nada() : htmlmin({ collapseWhitespace: true }))
 		.pipe(dest(`${config.dist}`))
 
 
 /**
  * Fonts
  */
-
 const fonts =
-	() => src(`${config.app}/**/*.{}`)
+	() => src(`${config.app}/**/*.{eot,ttf,woff,woff2}`)
+		.pipe(flatten())
+		.pipe(dest(`${config.dist}fonts/`))
+		.pipe(config.env === 'localDev' ? browserSync.stream() : nada());
+
 
 /**
  * Clean up files & folders
  */
-
 const cleanUp = () => del(`${config.dist}`);
-
 
 
 /**
 * Watch
 */
-
 function watchFiles() {
 	global.syncWatching = true;
-	watch(`${config.browserSyncServerDir[0]}**/*.html`, series(html));
+	watch(`${config.app}**/*.{html,njk,nunjucks}`, series(html));
 	watch(`${config.app}**/*.scss`, series(css));
 	watch(`${config.app}**/*.js`, series(js));
 }
 
+
 /**
- * Gulp Executables
+ * Gulp executables
  * These are the gulp functions
  */
 
- exports.default = series(
-	 cleanUp,
-	 parallel(css, js, html, images),
-	 parallel(watchFiles, initBrowserSync)
+// Default
+exports.default = series(
+	cleanUp,
+	parallel(css, js, html, images),
+	parallel(watchFiles, initBrowserSync)
 );
 
-//  exports.production = series();
+// Live site builder
+exports.production = series(
+	cleanUp,
+	parallel(css, js, html, images, fonts)
+);
 
- exports.html = series(
+// HTML generator
+exports.html = series(
+	cleanUp,
 	parallel(html)
- );
+);
+
+// Clean up production
+exports.cleanup = series(cleanUp);
+
+// Create CSS files
+exports.sass = series(css);

@@ -1,0 +1,16 @@
+{% extends "../templates/_layout.njk" %}
+{% import '../templates/parts/header/_header.njk' as header %}
+
+{% block head %}
+  <title>My site</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+{% endblock %}
+
+{% block header %}
+{{ header.renderHeader('index') }}
+{% endblock %}
+
+{% block content %}
+Hello world!
+{% endblock %}
