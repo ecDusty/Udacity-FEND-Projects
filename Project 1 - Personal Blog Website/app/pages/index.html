@@ -2,13 +2,13 @@
 {% import '../templates/parts/header/_header.njk' as header %}
 
 {% block head %}
-	<title>{{ title }}</title>
+	<title>{{ siteTitle }}</title>
 	<meta name="keywords" content="">
-	<meta name="description" content="{{ site-description }}">
+	<meta name="description" content="{{ siteDescription }}">
 {% endblock %}
 
 {% block header %}
-{{ header.renderHeader('home', mainNavs) }}
+{{ header.renderHeader('home', headerEl) }}
 {% endblock %}
 
 {% block content %}

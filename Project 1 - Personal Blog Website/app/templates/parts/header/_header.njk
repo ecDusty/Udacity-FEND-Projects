@@ -1,13 +1,15 @@
-{% macro renderHeader(activePage='home', mainNav=[]) %}
+{% macro renderHeader(activePage='home', header={}) %}
 <header class="header">
 	<div class="logo">
-	<a href="/">
-		<img src="/img/logo.png" alt="logo" />
+	<a href="{{ header.logo.link }}">
+		{% if header.logo.useSvg %}
+			<img src="{{ header.logo.svg }}" alt="{{ header.logo.altText }}" />
+		{% endif %}
 	</a>
 	</div>
 	<nav class="nav">
 		<ul class="nav-list">
-		{% for item in mainNav %}
+		{% for item in header.mainNavs %}
 			<li class="nav-list-item {%if activePage == item.name %}current{% endif %}">
 			<a href="{{ item.url }} " class="nav-list-link">{{ item.name }}</a>
 			</li>

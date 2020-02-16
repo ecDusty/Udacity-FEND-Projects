@@ -2,13 +2,13 @@
 {% import '../templates/parts/header/_header.njk' as header %} -->
 
 {% block head %}
-	<title>{{ title }}</title>
+	<title>Tech Times | {{ siteTitle }}</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="">
 {% endblock %}
 
 {% block header %}
-{{ header.renderHeader('blog', mainNavs) }}
+{{ header.renderHeader('blog', headerEl) }}
 {% endblock %}
 
 {% block content %}

@@ -1,31 +1,45 @@
 {
-	"title": "Unlikely IT's Web Dev Domain, Hong Kong",
-	"site-description": "Erin Macalligan's web development profile",
+	"siteTitle": "Unlikely IT's Web Dev Domain, Hong Kong",
+	"siteDescription": "Erin Macalligan's web development example website",
 	"mainBlog": [],
-	"mainNavs": [
-		{
-			"name":"home",
-			"url":"/"
+	"headerEl": {
+		"logo": {
+			"useSvg": true,
+			"svg":"/img/horizontal-logo-off-white.svg",
+			"img": "/img/horizontal-logo-off-white.png",
+			"altText": "unlikely IT Logo",
+			"link": "/"
 		},
-		{
-			"name":"blog",
-			"url":"/blog.html",
-			"folder": false
-		},
-		{
-			"name":"projects",
-			"url":"/projects.html",
-			"folder":true,
-			"folderItems": [
-				{ "name":"Project 1", "url":"/" }
-			]
-		}
-
-	],
-	"header": {
+		"mainNavs": [
+			{
+				"name":"services",
+				"url":"/services.html",
+				"folder": true,
+				"folderItems": [
+					{ "name":"Web App", "url": "/services.html#web-app" },
+					{ "name":"Store Web App", "url": "/services.html#store-web-app" }
+				]
+			},
+			{
+				"name":"tech times",
+				"url":"/tech-times.html",
+				"folder": false
+			},
+			{
+				"name":"projects",
+				"url":"/projects.html",
+				"folder":true,
+				"folderItems": [
+					{ "name":"udacity project 1", "url":"/projects.html#udacity-project-one" },
+					{ "name":"udacity project 2", "url":"/projects.html#udacity-project-two" }
+				]
+			}
+		]
+	},
+	"footerEl": {
 		"cta": {
-			"show": false,
-			"text": "Get Help",
+			"show": true,
+			"text":"Get Help",
 			"link": "/get-help.html"
 		}
 	}
