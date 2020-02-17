@@ -7,11 +7,17 @@
 	<meta name="description" content="">
 {% endblock %}
 
+{% block body %}grid grid-row-main grid-col-main aside{% endblock %}
+
 {% block header %}
-{{ header.renderHeader('blog', headerEl) }}
+{{ header.renderHeader('tech times', headerEl) }}
 {% endblock %}
 
 {% block content %}
 I'm trying to add more content to nunjucks /n TESTING!
 <h1>The Blog</h1>
+{% endblock %}
+
+{% block aside %}
+<aside class="aside"></aside>
 {% endblock %}

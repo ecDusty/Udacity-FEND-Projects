@@ -1,20 +1,22 @@
 {% macro renderHeader(activePage='home', header={}) %}
-<header class="header">
-	<div class="logo">
-	<a href="{{ header.logo.link }}">
-		{% if header.logo.useSvg %}
-			<img src="{{ header.logo.svg }}" alt="{{ header.logo.altText }}" />
-		{% endif %}
-	</a>
+<header class="header container-flex">
+	<div class="flex-row align-items-center justify-con-between">
+		<div class="header-logo pl-0">
+			<a href="{{ header.logo.link }}">
+				{% if header.logo.useSvg %}
+					<img src="{{ header.logo.svg }}" alt="{{ header.logo.altText }}" />
+				{% endif %}
+			</a>
+		</div>
+		<nav class="nav container-flex">
+			<ul class="nav-list flex-row">
+			{% for item in header.mainNavs %}
+				<li class="nav-list-item {%if activePage == item.name %}active{% endif %}">
+					<a href="{{ item.url }} " class="nav-list-link py-2">{{ item.name }}</a>
+				</li>
+			{% endfor %}
+			</ul>
+		</nav>
 	</div>
-	<nav class="nav">
-		<ul class="nav-list">
-		{% for item in header.mainNavs %}
-			<li class="nav-list-item {%if activePage == item.name %}current{% endif %}">
-			<a href="{{ item.url }} " class="nav-list-link">{{ item.name }}</a>
-			</li>
-		{% endfor %}
-		</ul>
-	</nav>
 </header>
 {% endmacro %}

@@ -4,6 +4,11 @@
 // Theme variables
 // @import "./settings/theme-variables"; // UNCOMMENT if bootstrap isn't used
 
+// Style Reset
+@import "./../components/template/reset";
+@import "./../components/template/typhography";
+@import "./../components/template/template-style";
+
 // Custom Utilities (requires bootstrap to work)
 // @import "./settings/utilities";
 
@@ -14,6 +19,7 @@
 /*!
  * Build Components
  */
+
 @import "./../components/header/header";
-@import "./../components/header/header";
+@import "./../components/header/nav";
 @import "./../components/footer/footer";

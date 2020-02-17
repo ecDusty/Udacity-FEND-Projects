@@ -1,0 +1,17 @@
+.header {
+	background-color: $primary;
+	color: $off-white;
+	height: 100%;
+
+	&-logo {
+		width: 250.64px;
+		height: 80px;
+		max-height: 100%;
+		max-width: 100%;
+
+		img {
+			height: 100%;
+		}
+	}
+
+}

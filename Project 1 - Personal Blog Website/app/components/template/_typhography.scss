@@ -1,0 +1,36 @@
+body {
+	color: $dark;
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+}
+
+
+.visually-hidden {
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+a {
+	color: $info;
+	text-decoration: none;
+	transition: color 0.25s ease-out;
+
+	&:hover {
+		color: $link-active;
+	}
+}

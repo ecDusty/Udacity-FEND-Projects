@@ -1,0 +1,28 @@
+.nav {
+	&-list {
+		display: flex;
+
+		&-link {
+			color: $info;
+			text-decoration: none;
+			display: block;
+			padding-left: $grid-gutter-width / 2;
+			padding-right: $grid-gutter-width / 2;
+
+			&:hover {
+				color: $link-active;
+			}
+		}
+
+		&-item {
+			padding: 0;
+
+			&.active {
+				a {
+					color: $link-active;
+				}
+			}
+		}
+	}
+
+}

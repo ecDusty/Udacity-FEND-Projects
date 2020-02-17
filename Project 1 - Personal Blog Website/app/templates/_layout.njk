@@ -17,14 +17,24 @@
 
 	<!-- Common scripts placeholder. -->
 	{% include "parts/scripts/_scripts.njk" %}
+
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,700&display=swap" rel="stylesheet">
 </head>
-<body>
+
+<body class="{% block body %}grid grid-row-main grid-col-main{% endblock %}">
+
+
 	{% block header %}
 	{% endblock %}
 
-	<div class="main">
+	<main class="main">
 		{% block content %} {% endblock %}
-	</div>
+	</main>
+
+	{% block aside %}
+	{% endblock %}
+
 	{% include "parts/footer/_footer.njk" %}
 
 </body>

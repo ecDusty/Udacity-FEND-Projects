@@ -1,0 +1,128 @@
+* {
+	box-sizing: border-box;
+}
+
+.body {
+	font-size: $font-size-base;
+}
+
+
+/**
+ * GRID & LayoutDefault Styles
+ *  Here are the sites default styles for it's grid
+ *  and default layout, included flex setup.
+ *
+ */
+
+.grid {
+	display: grid;
+	justify-content: stretch;
+
+	&-row-main {
+		grid-template-rows: 80px 1fr 1fr 1fr;
+		grid-row-gap: 0;
+
+		.header {
+			grid-row: 1;
+		}
+
+		.main {
+			grid-row: 2 / 4;
+		}
+
+		.footer {
+			grid-row: 4;
+		}
+
+		&.aside {
+			.main {
+				grid-row: 2 / 3
+			}
+			.aside {
+				grid-row: 3 / 4;
+			}
+
+			@include media-breakpoint-up('md') {
+
+				.main, .aside {
+					grid-row: 2 / 4;
+				}
+			}
+		}
+
+	}
+
+	&-col-main {
+		grid-template-columns: repeat($grid-columns, 1fr);
+		grid-column-gap: $grid-gutter-width;
+
+		.header, .main, .footer {
+			grid-column: 1 / #{$grid-columns-end};
+		}
+
+		&.aside {
+			.main, .aside {
+				grid-column: 1 / #{$grid-columns-end}
+			}
+
+			@include media-breakpoint-up('md') {
+
+				.main {
+					grid-column: 1/10;
+				}
+
+				.aside {
+					grid-column: 10 / #{$grid-columns-end};
+				}
+			}
+		}
+	}
+}
+
+/// A Container wrapper for any flex element. This allows the use
+// of .flex-row to offset it's sides by the gutter-width/2. Which
+// inturn makes it easier to have flexed items evenly spaced (bootstrap trick)
+.container-flex {
+	padding-left: $grid-gutter-width / 2;
+	padding-right: $grid-gutter-width / 2;
+	overflow-wrap: break-word;
+}
+
+.flex-row {
+	display: flex;
+	margin-left: -$grid-gutter-width / 2;
+	margin-right: -$grid-gutter-width / 2;
+	height: 100%;
+
+	> * {
+		padding-left: $grid-gutter-width / 2;
+		padding-right: $grid-gutter-width / 2;
+	}
+}
+
+.justify-con {
+	&-center {
+		justify-content: center;
+	}
+
+	&-between {
+		justify-content: space-between;
+	}
+}
+
+.align {
+	&-items {
+		&-center {
+			align-items: center;
+		}
+	}
+}
+// END OF FLEX STYLES
+
+/**
+ * SPACING Default Styles
+ *   These styles are loaded from bootstrap library
+ */
+
+
+
