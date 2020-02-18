@@ -1,28 +1,52 @@
+/*!
+ * NAVIGATION Styles
+ */
 .nav {
 	&-list {
 		display: flex;
-
-		&-link {
-			color: $info;
-			text-decoration: none;
-			display: block;
-			padding-left: $grid-gutter-width / 2;
-			padding-right: $grid-gutter-width / 2;
-
-			&:hover {
-				color: $link-active;
-			}
-		}
+		height: 100%;
 
 		&-item {
 			padding: 0;
+			text-transform: capitalize;
 
 			&.active {
 				a {
 					color: $link-active;
+					border-top: 5px solid $primary;
+					border-bottom: 5px solid $shadow;
 				}
+			}
+		}
+
+		&-link {
+			color: $info;
+			display: flex;
+			align-items: center;
+			text-decoration: none;
+			padding-left: $grid-gutter-width / 2;
+			padding-right: $grid-gutter-width / 2;
+			transition: border 0.3s ease-out;
+			height: 100%;
+			border: 0px solid $shadow;
+
+			&:hover {
+				color: $link-active;
+				border-top: 8px solid $primary;
+				border-bottom: 8px solid $shadow;
 			}
 		}
 	}
 
+
+	/*!
+	 * TABLET STYLES
+	 */
+
+	/*!
+	 * DESKTOP STYLES
+	 */
+	 @include media-breakpoint-up('md') {
+
+	 }
 }

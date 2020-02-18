@@ -1,4 +1,16 @@
 .footer {
 	background-color: $primary;
 	color: $off-white;
+	display: grid;
+	grid-column-gap: $grid-gutter-width;
+	grid-template-columns: subgrid;
+	grid-template-rows: auto auto auto;
+
+
+	/*!
+	 * PRE FOOTER Styles
+	 */
+	&-pre {
+		background-color: $gray-300;
+	}
 }

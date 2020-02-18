@@ -1,7 +1,12 @@
+/*!
+ * HEADER Styles
+ */
+
 .header {
 	background-color: $primary;
 	color: $off-white;
 	height: 100%;
+	font-size: 1.2em;
 
 	&-logo {
 		width: 250.64px;

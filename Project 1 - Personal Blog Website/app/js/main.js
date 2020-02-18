@@ -12,3 +12,4 @@ import 'lazysizes';
  * Build Components
  */
 import '../components/header/_header';
+import '../components/forms/forms';

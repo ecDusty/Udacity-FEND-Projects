@@ -1,17 +1,13 @@
 {% import "../../_globals.njk" as global %}
 <footer class="footer">
-	<div class="footer-pre">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-				This is the main top row of the footer</div>
-			</div>
-		</div>
+	<div class="gCol-12">
+	<div class="footer-pre flex-row">
+		{% include "../pre-footer/_newsletter-subscribe.njk" %}
 	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6">Secondary row of footer</div>
-			<div class="col-sm-6">Secondary row of footer</div>
-		</div>
 	</div>
+	<div class="footer-menu gCol-12">
+		Footer menu with logo area
+	</div>
+	<div class="gCol-6-start">Secondary row of footer</div>
+	<div class="gCol-6-end">Secondary row of footer</div>
 </footer>

@@ -1,0 +1,59 @@
+.form {
+	&-inline {
+		display: flex;
+		flex-wrap: wrap;
+
+		.form {
+			&-header {
+				flex-basis: 100%;
+			}
+
+			&-group {
+				flex: 1 1 100%;
+				position: relative;
+				overflow: hidden;
+			}
+
+			&-input {
+				padding: 25px 15px 10px;
+				width: 100%;
+
+				& ~ label {
+					position: absolute;
+					color: black;
+					font-weight: bold;
+					top: 6px;
+					font-size: 100%;
+					left: 17px;
+					transition: font-size 0.25s ease-out, top 0.25s ease-out;
+				}
+
+				&[value] ~ label {
+					top: 16px;
+					font-size: 140%;
+				}
+
+				&:focus ~ {
+					label {
+						font-size: 100%;
+						top: 8px;
+					}
+				}
+			}
+
+			&-btn-group {
+				flex: 1 1 100%;
+			}
+
+			@include media-breakpoint-up('sm') {
+				&-group {
+					flex: 1 1;
+				}
+
+				&-btn-group {
+					flex: 1 1 20%;
+				}
+			}
+		}
+	}
+}

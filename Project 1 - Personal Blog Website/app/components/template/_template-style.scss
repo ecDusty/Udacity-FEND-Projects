@@ -1,3 +1,9 @@
+/*!
+ * BASE TEMPLATE Styles
+ * Here you'll find all the styles for the base
+ * level content that makes up the unlikely IT website.
+ */
+
 * {
 	box-sizing: border-box;
 }
@@ -14,12 +20,22 @@
  *
  */
 
+@mixin padd-gutter {
+	padding-left: $grid-gutter-width / 2;
+	padding-right: $grid-gutter-width / 2;
+}
+
+@mixin marg-gutter {
+	margin-left: -$grid-gutter-width / 2;
+	margin-right: -$grid-gutter-width / 2;
+}
+
 .grid {
 	display: grid;
 	justify-content: stretch;
 
 	&-row-main {
-		grid-template-rows: 80px 1fr 1fr 1fr;
+		grid-template-rows: 80px auto auto auto;
 		grid-row-gap: 0;
 
 		.header {
@@ -43,30 +59,31 @@
 			}
 
 			@include media-breakpoint-up('md') {
-
 				.main, .aside {
 					grid-row: 2 / 4;
 				}
 			}
 		}
-
 	}
 
 	&-col-main {
-		grid-template-columns: repeat($grid-columns, 1fr);
+		grid-template-columns: repeat($grid-columns, calc(8.3333% - 27.53px));
 		grid-column-gap: $grid-gutter-width;
+		@include padd-gutter();
 
 		.header, .main, .footer {
 			grid-column: 1 / #{$grid-columns-end};
+			@include padd-gutter();
+			@include marg-gutter();
 		}
 
 		&.aside {
 			.main, .aside {
-				grid-column: 1 / #{$grid-columns-end}
+				grid-column: 1 / #{$grid-columns-end};
+				@include padd-gutter();
 			}
 
 			@include media-breakpoint-up('md') {
-
 				.main {
 					grid-column: 1/10;
 				}
@@ -79,24 +96,71 @@
 	}
 }
 
+.gCol {
+	&-6 {
+		&-start {
+			grid-column: 1 / 7;
+		}
+		&-end {
+			grid-column: 7 / 13;
+		}
+	}
+
+	&-12 {
+		grid-column: 1 / 13;
+	}
+
+	&-sm {
+	@include media-breakpoint-up('sm') {
+		&-6 {
+			&-start {
+				grid-column: 1 / 7;
+			}
+			&-end {
+				grid-column: 7 / 13;
+			}
+		}
+	}
+	}
+
+	&-md {
+	@include media-breakpoint-up('md') {
+		&-9 {
+			&-start {
+				grid-column: 1 / 10;
+			}
+			&-end {
+				grid-column: 4 / 13;
+			}
+		}
+
+		&-3 {
+			&-start {
+				grid-column: 1 / 4;
+			}
+			&-end {
+				grid-column: 10 / 13;
+			}
+		}
+	}
+	}
+}
+
 /// A Container wrapper for any flex element. This allows the use
 // of .flex-row to offset it's sides by the gutter-width/2. Which
 // inturn makes it easier to have flexed items evenly spaced (bootstrap trick)
 .container-flex {
-	padding-left: $grid-gutter-width / 2;
-	padding-right: $grid-gutter-width / 2;
+	@include padd-gutter();
 	overflow-wrap: break-word;
 }
 
 .flex-row {
 	display: flex;
-	margin-left: -$grid-gutter-width / 2;
-	margin-right: -$grid-gutter-width / 2;
+	@include marg-gutter();
 	height: 100%;
 
 	> * {
-		padding-left: $grid-gutter-width / 2;
-		padding-right: $grid-gutter-width / 2;
+		@include padd-gutter();
 	}
 }
 
@@ -114,6 +178,10 @@
 	&-items {
 		&-center {
 			align-items: center;
+		}
+
+		&-stretch {
+			align-items: stretch;
 		}
 	}
 }

@@ -242,6 +242,7 @@ function watchFiles() {
 			`${config.app}**/*.html`,
 			`${config.app}**/*.njk`,
 			`${config.app}**/**/*.njk`,
+			`${config.app}**/**/**/*.njk`,
 			`${config.app}**/*.nunjucks`,
 			`${config.nunjucks.data}*.json`
 		],
