@@ -14,7 +14,7 @@
 				a {
 					color: $link-active;
 					border-top: 5px solid $primary;
-					border-bottom: 5px solid $shadow;
+					border-bottom: 5px solid $warning;
 				}
 			}
 		}
@@ -28,12 +28,12 @@
 			padding-right: $grid-gutter-width / 2;
 			transition: border 0.3s ease-out;
 			height: 100%;
-			border: 0px solid $shadow;
+			border: 0px solid $warning;
 
 			&:hover {
 				color: $link-active;
 				border-top: 8px solid $primary;
-				border-bottom: 8px solid $shadow;
+				border-bottom: 8px solid $warning;
 			}
 		}
 	}
