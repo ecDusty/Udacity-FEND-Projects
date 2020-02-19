@@ -1,48 +1,57 @@
 .form {
+	&-header {
+		flex-basis: 100%;
+	}
+
+	&-group {
+		flex: 1 1 100%;
+		position: relative;
+		overflow: hidden;
+		padding-bottom: $grid-gutter-width / 2;
+	}
+
+	&-input {
+		padding: 22px 12px 8px;
+		width: 100%;
+		font-size: 0.9em;
+
+		& ~ label {
+			position: absolute;
+			color: black;
+			font-weight: bold;
+			top: 14px;
+			font-size: 130%;
+			left: 13px;
+			line-height: 1;
+			transition: font-size 0.25s ease-out, top 0.25s ease-out;
+		}
+
+		&:focus ~, &.js--filled ~ {
+			label {
+				font-size: 90%;
+				top: 7px;
+			}
+		}
+	}
+
+	&-btn-group {
+		padding-bottom: $grid-gutter-width / 2;
+	}
+
 	&-inline {
 		display: flex;
 		flex-wrap: wrap;
 
 		.form {
-			&-header {
-				flex-basis: 100%;
-			}
-
 			&-group {
-				flex: 1 1 100%;
-				position: relative;
-				overflow: hidden;
+				padding-right: $grid-gutter-width / 2;
 			}
-
-			&-input {
-				padding: 25px 15px 10px;
-				width: 100%;
-
-				& ~ label {
-					position: absolute;
-					color: black;
-					font-weight: bold;
-					top: 6px;
-					font-size: 100%;
-					left: 17px;
-					transition: font-size 0.25s ease-out, top 0.25s ease-out;
-				}
-
-				&[value] ~ label {
-					top: 16px;
-					font-size: 140%;
-				}
-
-				&:focus ~ {
-					label {
-						font-size: 100%;
-						top: 8px;
-					}
-				}
-			}
-
 			&-btn-group {
 				flex: 1 1 100%;
+
+				.btn {
+					height: 100%;
+				}
 			}
 
 			@include media-breakpoint-up('sm') {
@@ -53,6 +62,18 @@
 				&-btn-group {
 					flex: 1 1 20%;
 				}
+			}
+		}
+
+		@include media-breakpoint-down('sm') {
+			.content__gdpr {
+				order: 1;
+			}
+			.form-btn-group {
+				order: 2;
+			}
+			.content__gdprLegal {
+				order: 3;
 			}
 		}
 	}

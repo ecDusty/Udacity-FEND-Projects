@@ -13,8 +13,6 @@ forms.forEach((form) => {
 			} else if (input.value === "" && input.classList.contains('js--filled')) {
 				input.classList.remove('js--filled');
 			}
-			console.log('event fired')
 		});
-		console.log('event setup for input')
 	});
 });
