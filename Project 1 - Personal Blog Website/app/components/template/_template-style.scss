@@ -243,7 +243,7 @@
 	}
 
 	&-secondary {
-
+		@include makeBtn(#{$secondary}, #{$info}, #{$warning}, #{$primary})
 	}
 
 	&::after {
