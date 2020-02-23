@@ -1,5 +1,6 @@
 {% extends "../templates/_layout.njk" %}
 {% import '../templates/parts/header/_header.njk' as header %}
+{% import '../templates/parts/favorites-bar/_favorites.njk' as favBar %}
 
 {% block head %}
 	<title>{{ siteTitle }}</title>
@@ -12,6 +13,25 @@
 {% endblock %}
 
 {% block content %}
-I'm trying to add more content to nunjucks /n TESTING!
+<section class="my-3 my-sm-4 my-md-5 px-xs-3 px-sm-4 px-md-5">
+	<div class="my-3 text-center">
+		<h1 class="mb-3">unlikely IT</h1>
+		<p>I'm trying to add more content to nunjucks /n TESTING!</p>
+	</div>
+</section>
+<section class="my-3 my-sm-4 my-md-5 px-sm-4 px-xs-3 px-md-5 favorites">
+	<div class="py-3" >
+		<h2>Tech Times Favorites</h2>
+	</div>
+	<div class="contianer">
+		<div class="row swiper-container">
+			<div class="swiper-wrapper">
+				{{ favBar.render(news) }}
+			</div>
+		</div>
+	</div>
+</section>
+
 <h1>HELP ME OUT!</h1>
+<p>I'm trying to add more content to nunjucks /n TESTING!</p>
 {% endblock %}

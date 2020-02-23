@@ -36,7 +36,9 @@
 	{% block aside %}
 	{% endblock %}
 
-	{% include "parts/footer/_footer.njk" %}
+	{% block footer %}
+		{% include "parts/footer/_footer.njk" %}
+	{% endblock%}
 
 </body>
 </html>

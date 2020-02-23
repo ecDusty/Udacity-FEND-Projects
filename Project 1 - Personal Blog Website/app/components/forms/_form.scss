@@ -6,7 +6,6 @@
 	&-group {
 		flex: 1 1 100%;
 		position: relative;
-		overflow: hidden;
 		padding-bottom: $grid-gutter-width / 2;
 	}
 
@@ -14,6 +13,9 @@
 		padding: 22px 12px 8px;
 		width: 100%;
 		font-size: 0.9em;
+		border-radius: 0;
+		box-shadow: 0 0 0 0 #{$primary};
+		border: 1px solid #{$primary};
 
 		& ~ label {
 			position: absolute;
@@ -31,6 +33,17 @@
 				font-size: 90%;
 				top: 7px;
 			}
+		}
+
+		&:invalid, &.js--input-error {
+			box-shadow: 0 0 5px 2px #{$warning};
+			border-color: $warning;
+		}
+
+		&:focus {
+			transition: box-shadow 0.3s linear;
+			box-shadow: 0 0 3px 3px #{$primary};
+			border-color: $primary;
 		}
 	}
 

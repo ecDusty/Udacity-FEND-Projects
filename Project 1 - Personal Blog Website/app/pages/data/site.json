@@ -36,6 +36,26 @@
 			}
 		]
 	},
+	"news": {
+		"newsName": "Tech Times",
+		"linkBase": "/tech-times/",
+		"list": [
+			{
+				"id": 1,
+				"title": "Automating your Workflow | Wed Development",
+				"favorite": true,
+				"content": "",
+				"summary": "<p>To create a automated toolkit is a corner stone to every developers toolkit. After 5 years, heres whats been put together</p>",
+				"link":"automating-your-workflow---web-development",
+				"summaryImage": {
+					"srcSM": "",
+					"src": "",
+					"alt": ""
+				},
+				"url": "automating-your-workflow---wed-development.html"
+			}
+		]
+	},
 	"footerEl": {
 		"cta": {
 			"show": true,

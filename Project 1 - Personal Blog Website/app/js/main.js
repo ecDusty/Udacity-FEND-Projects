@@ -1,3 +1,4 @@
+/* globals Swiper */
 /**
  * Imported features
  */
@@ -11,5 +12,7 @@ import 'lazysizes';
 /**
  * Build Components
  */
-import '../components/header/_header';
+import '../components/header/header';
 import '../components/forms/forms';
+
+const swiper = new Swiper('.swiper-container');

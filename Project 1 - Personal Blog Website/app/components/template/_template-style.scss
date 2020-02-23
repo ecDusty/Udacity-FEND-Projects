@@ -220,18 +220,19 @@
 
 .btn {
 	border: none;
+	display: inline-block;
+	border-radius: 0;
 	font-weight: 700;
-	overflow: hidden;
 	cursor: pointer;
 	background: transparent;
 	position: relative;
 	text-transform: uppercase;
+	text-shadow: none;
 
 	color: #fff;
 
 	span {
 		padding: 10px 15px;
-		width: 200px;
 		max-width: 100%;
 		display: inline-block;
 		position: relative;
@@ -243,7 +244,7 @@
 	}
 
 	&-secondary {
-		@include makeBtn(#{$secondary}, #{$info}, #{$warning}, #{$primary})
+		@include makeBtn(#{$secondary}, #{$info}, #{$link-active}, #{$danger})
 	}
 
 	&::after {
@@ -262,6 +263,10 @@
 		transition: background 0.35s linear;
 	}
 
+	&:hover {
+		text-shadow: none;
+	}
+
 	&:hover span, &:hover::after {
 		background-position: 0;
 		font-size: 1em;
@@ -269,3 +274,4 @@
 		color: $info;
 	}
 }
+

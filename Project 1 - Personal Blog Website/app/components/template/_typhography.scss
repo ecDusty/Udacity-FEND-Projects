@@ -38,6 +38,10 @@ h6 { font-size: $h6-font-size; }
 	width: 1px;
 }
 
+p {
+	margin-bottom: 10px;
+}
+
 a {
 	color: $info;
 	text-decoration: none;
@@ -52,4 +56,16 @@ a {
 
 button {
 	font-family: $font-family-base;
+}
+
+.text {
+	&-left {
+		text-align: left;
+	}
+	&-right {
+		text-align: right;
+	}
+	&-center {
+		text-align: center;
+	}
 }

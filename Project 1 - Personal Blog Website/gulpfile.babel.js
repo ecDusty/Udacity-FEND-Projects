@@ -1,9 +1,16 @@
+/* eslint-disable implicit-arrow-linebreak */
 /**
  * Dev Packages for running Gulp
  */
 
 // Main Gulp
-import { src, dest, parallel, series, watch } from 'gulp';
+import {
+	src,
+	dest,
+	parallel,
+	series,
+	watch
+} from 'gulp';
 
 // =======
 // Custom Packages
@@ -31,7 +38,7 @@ import imagemin from 'gulp-imagemin';
 import pngquant from 'imagemin-pngquant';
 import log from 'fancy-log';
 import colors from 'ansi-colors';
-import htmlmin from 'gulp-htmlmin'
+import htmlmin from 'gulp-htmlmin';
 import nunjucksRender from 'gulp-nunjucks-render';
 
 
@@ -53,7 +60,7 @@ const config = {
 config.browserSync = {
 	server: config.browserSyncServerDir,
 	https: false,
-}
+};
 
 // Website JSON data location
 config.nunjucks.data = `${config.app}pages/data/`;
@@ -105,8 +112,8 @@ const initBrowserSync = () => browserSync.init(config.browserSync);
 /**
  * Styles
  */
-const css =
-	() => src(`${config.app}/**/*.scss`)
+const css = () =>
+	src(`${config.app}/**/*.scss`)
 		.pipe(gulpif(global.syncWatching, cached('css')))
 		.pipe(sassInheritance({
 			dir: `${config.app}`
@@ -117,21 +124,20 @@ const css =
 				: sourcemaps.init()
 		)
 		.pipe(sourcemaps.identityMap())
-		.pipe(
-			sass
-				.sync({
-					sourceComments: true,
-					includePaths: ['node_modules/'],
-				})
-				.on('error', function errorHandler(err) {
-					log(colors.red(`ERROR (sass): ${err.message}`));
-					notifier.notify({
-						title: 'Compile Error',
-						message: err.message,
-						sound: true,
-					});
-					this.emit('end');
-				}))
+		.pipe(sass
+			.sync({
+				sourceComments: true,
+				includePaths: ['node_modules/'],
+			})
+			.on('error', function errorHandler(err) {
+				log(colors.red(`ERROR (sass): ${err.message}`));
+				notifier.notify({
+					title: 'Compile Error',
+					message: err.message,
+					sound: true,
+				});
+				this.emit('end');
+			}))
 		.pipe(autoprefixer())
 		.pipe(config.env === 'production'
 			? sass({ outputStyle: 'compressed', })
@@ -149,8 +155,8 @@ const css =
 /**
  * JAVASCRIPT COMPILING
  */
-const js =
-	() => src(`${config.app}/js/*.js`)
+const js = () =>
+	src(`${config.app}/js/*.js`)
 		.pipe(bro({
 			debug: true,
 			transform: [
@@ -179,8 +185,8 @@ const js =
  * IMAGE COMPILING
  * Images are only minified for production, not local development
  */
-const images =
-	() => src(`${config.app}/**/*.{jpg,jpeg,svg,png,gif}`)
+const images = () =>
+	src(`${config.app}/**/*.{jpg,jpeg,svg,png,gif}`)
 		.pipe(config.env === 'localDev'
 			? imagemin({
 				progressive: true,
@@ -201,27 +207,27 @@ const images =
  * HTML compiling
  * The preprocessor removes development sections
  */
-const htmlData = () => {
+const htmlDataJSON = () => {
 	const mainData = JSON.parse(fs.readFileSync(`${config.nunjucks.data}site.json`));
 	return mainData;
-}
+};
 
-const html =
-	() => src(`${config.app}/pages/**/*.html`) // .pipe(flatten())
-		.pipe(data(JSON.parse(fs.readFileSync(`${config.nunjucks.data}site.json`))))
+const html = () =>
+	src(`${config.app}/pages/**/*.html`) // .pipe(flatten())
+		.pipe(data(htmlDataJSON()))
 		.pipe(nunjucksRender({
 			path: config.nunjucks.templates
 		}))
 		.pipe(config.env === 'localDev' ? nada() : htmlmin({ collapseWhitespace: true }))
 		.pipe(dest(`${config.dist}`))
-		.pipe(config.env === 'localDev' ? browserSync.stream() : nada())
+		.pipe(config.env === 'localDev' ? browserSync.stream() : nada());
 
 
 /**
  * Fonts
  */
-const fonts =
-	() => src(`${config.app}/**/*.{eot,ttf,woff,woff2}`)
+const fonts = () =>
+	src(`${config.app}/**/*.{eot,ttf,woff,woff2}`)
 		.pipe(flatten())
 		.pipe(dest(`${config.dist}fonts/`))
 		.pipe(config.env === 'localDev' ? browserSync.stream() : nada());
@@ -239,15 +245,14 @@ const cleanUp = () => del(`${config.dist}`);
 function watchFiles() {
 	global.syncWatching = true;
 	watch([
-			`${config.app}**/*.html`,
-			`${config.app}**/*.njk`,
-			`${config.app}**/**/*.njk`,
-			`${config.app}**/**/**/*.njk`,
-			`${config.app}**/*.nunjucks`,
-			`${config.nunjucks.data}*.json`
-		],
-		series(html)
-	);
+		`${config.app}**/*.html`,
+		`${config.app}**/*.njk`,
+		`${config.app}**/**/*.njk`,
+		`${config.app}**/**/**/*.njk`,
+		`${config.app}**/*.nunjucks`,
+		`${config.nunjucks.data}*.json`
+	],
+	series(html));
 	watch(`${config.app}**/*.scss`, series(css));
 	watch(`${config.app}**/*.js`, series(js));
 }

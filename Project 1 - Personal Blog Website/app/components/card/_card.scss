@@ -1,0 +1,27 @@
+.card {
+	background-color: #fff;
+	box-shadow: 0 0 0 0 transparent;
+	transition: box-shadow 0.25s ease-out;
+
+	&-img {
+		&-wrap {
+			min-height:150px;
+		}
+	}
+
+	&-content {
+		border: 1px solid #{$link-active};
+		border-top: none;
+	}
+
+	&-title {
+		a, a:hover {
+			color: $secondary;
+			text-shadow: none;
+		}
+	}
+
+	&:hover {
+		box-shadow: -2px 6px 10px 0 #{$primary};
+	}
+}
