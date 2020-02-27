@@ -49,12 +49,15 @@ import nunjucksRender from 'gulp-nunjucks-render';
 const config = {
 	app: './app/',
 	dist: './dist/',
+	distApp: './dist/app/',
 	env: !parseArgs(process.argv).env ? 'localDev' : parseArgs(process.argv).env,
 	browserSyncServerDir: ['./dist'],
 	browserSync: {},
 	syncWatching: false,
 	nunjucks: {}
 };
+
+
 
 // Config BrowserSync config object
 config.browserSync = {
@@ -146,7 +149,7 @@ const css = () =>
 			? nada()
 			: sourcemaps.write())
 		.pipe(flatten())
-		.pipe(dest(`${config.dist}css/`))
+		.pipe(dest(`${config.distApp}css/`))
 		.pipe(config.env === 'localDev'
 			? browserSync.stream()
 			: nada());
@@ -155,6 +158,18 @@ const css = () =>
 /**
  * JAVASCRIPT COMPILING
  */
+const jsVendor = () =>
+	src(`${config.app}/vendor/**/*.{js,min.js}`)
+		.pipe(gulpif(global.syncWatching, cached('jsVendor')))
+		.pipe(buffer())
+		.pipe((config.env === 'production')
+			? uglify()
+			: nada())
+		.pipe(dest(`${config.distApp}vendor/`))
+		.pipe(config.env === 'localDev'
+			? browserSync.stream()
+			: nada());
+
 const js = () =>
 	src(`${config.app}/js/*.js`)
 		.pipe(bro({
@@ -175,7 +190,7 @@ const js = () =>
 		.pipe((config.env === 'production')
 			? uglify()
 			: nada())
-		.pipe(dest(`${config.dist}js/`))
+		.pipe(dest(`${config.distApp}js/`))
 		.pipe(config.env === 'localDev'
 			? browserSync.stream()
 			: nada());
@@ -197,11 +212,18 @@ const images = () =>
 			})
 			: nada())
 		.pipe(flatten())
-		.pipe(dest(`${config.dist}img/`))
+		.pipe(dest(`${config.distApp}img/`))
 		.pipe(config.env === 'localDev'
 			? browserSync.stream()
 			: nada());
 
+const favicon = () =>
+	src(`${config.app}/**/*.ico`)
+		.pipe(flatten())
+		.pipe(dest(`${config.distApp}img/favicon/`))
+		.pipe(config.env === 'localDev'
+			? browserSync.stream()
+			: nada());
 
 /**
  * HTML compiling
@@ -229,7 +251,7 @@ const html = () =>
 const fonts = () =>
 	src(`${config.app}/**/*.{eot,ttf,woff,woff2}`)
 		.pipe(flatten())
-		.pipe(dest(`${config.dist}fonts/`))
+		.pipe(dest(`${config.distApp}fonts/`))
 		.pipe(config.env === 'localDev' ? browserSync.stream() : nada());
 
 
@@ -245,16 +267,18 @@ const cleanUp = () => del(`${config.dist}`);
 function watchFiles() {
 	global.syncWatching = true;
 	watch([
-		`${config.app}**/*.html`,
-		`${config.app}**/*.njk`,
-		`${config.app}**/**/*.njk`,
-		`${config.app}**/**/**/*.njk`,
-		`${config.app}**/*.nunjucks`,
+		`${config.app}pages/**/*.html`,
+		`${config.app}templates/*.njk`,
+		`${config.app}templates/**/*.njk`,
+		`${config.app}templates/**/**/*.njk`,
+		`${config.app}templates/*.nunjucks`,
 		`${config.nunjucks.data}*.json`
 	],
 	series(html));
+	watch(`${config.app}**/*.{jpg,jpeg,svg,png,gif}`, series(images));
+	watch(`${config.app}**/*.ico`, series(favicon));
 	watch(`${config.app}**/*.scss`, series(css));
-	watch(`${config.app}**/*.js`, series(js));
+	watch(`${config.app}**/*.js`, series(js, jsVendor));
 }
 
 
@@ -266,14 +290,14 @@ function watchFiles() {
 // Default
 exports.default = series(
 	cleanUp,
-	parallel(css, js, html, images),
+	parallel(css, js, jsVendor, html, images, favicon),
 	parallel(watchFiles, initBrowserSync)
 );
 
 // Live site builder
 exports.production = series(
 	cleanUp,
-	parallel(css, js, html, images, fonts)
+	parallel(css, js, jsVendor, html, images, fonts)
 );
 
 // HTML generator
@@ -287,3 +311,7 @@ exports.cleanup = series(cleanUp);
 
 // Create CSS files
 exports.sass = series(css);
+
+// Create JS Files
+exports.js = series(js, jsVendor);
+exports.jsV = series(jsVendor);
