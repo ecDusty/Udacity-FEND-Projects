@@ -68,6 +68,7 @@ $colors: map-merge(
 );
 
 $primary:       #0a212a !default;
+$primary-light:       #4b5d64 !default;
 $secondary:     #286EB7 !default;
 $success:       $green !default;
 $info:          #24BAA7 !default;
@@ -199,13 +200,14 @@ $body-color:                $dark !default;
 // // Define the minimum dimensions at which your layout will change,
 // // adapting to different screen sizes, for use in media queries.
 
-// $grid-breakpoints: (
-//   xs: 0,
-//   sm: 576px,
-//   md: 768px,
-//   lg: 992px,
-//   xl: 1200px
-// ) !default;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
 
 // @include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
 // @include _assert-starts-at-zero($grid-breakpoints, "$grid-breakpoints");
@@ -302,9 +304,9 @@ $font-weight-bold:            700 !default;
 // $font-weight-base:            $font-weight-normal !default;
 // $line-height-base:            1.5 !default;
 
-$h1-font-size:                $font-size-base * 2.5 !default;
-$h2-font-size:                $font-size-base * 2 !default;
-$h3-font-size:                $font-size-base * 1.75 !default;
+$h1-font-size:                $font-size-base * 4 !default;
+$h2-font-size:                $font-size-base * 3 !default;
+$h3-font-size:                $font-size-base * 2 !default;
 $h4-font-size:                $font-size-base * 1.5 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
