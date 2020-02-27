@@ -1,0 +1,26 @@
+.favorites {
+	.swiper {
+		&-container {
+			margin: 0 30px;
+			padding: 0 15px;
+		}
+
+		&-slide {
+			.card {
+				opacity: 0.3;
+			}
+
+			&-visible {
+				.card {
+					opacity: 0.6;
+				}
+			}
+
+			&-active {
+				.card {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}

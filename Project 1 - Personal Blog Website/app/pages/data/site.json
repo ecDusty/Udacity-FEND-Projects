@@ -1,58 +1,209 @@
 {
-	"siteTitle": "Unlikely IT's Web Dev Domain, Hong Kong",
+	"siteTitle": "unlikely IT's Web Dev Domain, Hong Kong",
 	"siteDescription": "Erin Macalligan's web development example website",
-	"mainBlog": [],
+	"pages": [
+		{
+			"id": 0,
+			"name": "Home",
+			"url": "/",
+			"mainNav": false,
+			"footerNav": false,
+			"folder": false
+		},
+		{
+			"id": 1,
+			"name":"Tech Roundup",
+			"url":"/tech-roundup.html",
+			"mainNav": true,
+			"footerNav": true,
+			"folder": false
+		},
+		{
+			"id": 2,
+			"name":"Services",
+			"url":"/#",
+			"mainNav": true,
+			"footerNav": true,
+			"folder": true,
+			"folderItems": [
+				{ "name":"Web App", "url": "/#" },
+				{ "name":"Store Web App", "url": "/#" }
+			]
+		},
+		{
+			"id": 3,
+			"name":"Projects",
+			"url":"/#",
+			"mainNav": true,
+			"footerNav": true,
+			"subPages":true,
+			"subPageItems": [
+				{ "name":"udacity project 1", "url":"/#" },
+				{ "name":"udacity project 2", "url":"/#" }
+			]
+		}
+
+	],
 	"headerEl": {
 		"logo": {
 			"useSvg": true,
-			"svg":"/img/horizontal-logo-off-white.svg",
-			"img": "/img/horizontal-logo-off-white.png",
+			"svg":"/app/img/horizontal-logo-off-white.svg",
+			"img": "/app/img/horizontal-logo-off-white.png",
 			"altText": "unlikely IT Logo",
 			"link": "/"
-		},
-		"mainNavs": [
-			{
-				"name":"services",
-				"url":"/services.html",
-				"folder": true,
-				"folderItems": [
-					{ "name":"Web App", "url": "/services.html#web-app" },
-					{ "name":"Store Web App", "url": "/services.html#store-web-app" }
-				]
-			},
-			{
-				"name":"tech times",
-				"url":"/tech-times.html",
-				"folder": false
-			},
-			{
-				"name":"projects",
-				"url":"/projects.html",
-				"folder":true,
-				"folderItems": [
-					{ "name":"udacity project 1", "url":"/projects.html#udacity-project-one" },
-					{ "name":"udacity project 2", "url":"/projects.html#udacity-project-two" }
-				]
-			}
-		]
+		}
 	},
 	"news": {
 		"newsName": "Tech Times",
-		"linkBase": "/tech-times/",
+		"linkBase": "/tech-times",
 		"list": [
 			{
-				"id": 1,
+				"id": 0,
+				"shortTitle": "Automating your Workflow",
 				"title": "Automating your Workflow | Wed Development",
 				"favorite": true,
-				"content": "",
 				"summary": "<p>To create a automated toolkit is a corner stone to every developers toolkit. After 5 years, heres whats been put together</p>",
-				"link":"automating-your-workflow---web-development",
+				"imgPlaceHolder": "/app/img/card-img-placeholder.png",
 				"summaryImage": {
-					"srcSM": "",
-					"src": "",
-					"alt": ""
+					"samp": false,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "/app/img/automation-image-100.jpg",
+					"src": "/app/img/automation-image.jpg",
+					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it unlikely IT Hong Kong."
 				},
-				"url": "automating-your-workflow---wed-development.html"
+				"content": [
+					"<p>I’ve been a Web developer for just under 6 years now, and the item that gave me the biggest “💡Ah Ha” moment was when I discovered the developers tool kit. This isn’t the Text editor, color & text theme, hardware setup, working space layout, or a special office.</p>",
+					"<h3>Welcome to the world of Workflow Automation 🤯</h3>"
+				],
+				"url": "/automating-your-workflow---wed-development.html",
+				"related": [ 2, 3, 6]
+			},
+			{
+				"id": 1,
+				"shortTitle": "Labores accusam assueverit",
+				"title": "Labores accusam assueverit | Wed Development",
+				"favorite": true,
+				"content": "",
+				"summary": "<p>Et per alia ponderum, sint autem hendrerit vim eu. Pro nullam voluptatum an. Cu pro nostro adolescens.</p>",
+				"summaryImage": {
+					"samp": true,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "automation-image-100.jpg",
+					"src": "automation-image.jpg",
+					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
+				},
+				"url": ".html#favorites",
+				"related": [ 2, 3, 6]
+			},
+			{
+				"id": 2,
+				"shortTitle": "Et per alia ponderum",
+				"title": "Et per alia ponderum | Wed Development",
+				"favorite": false,
+				"content": "",
+				"summary": "<p>Et per alia ponderum, sint autem hendrerit vim eu. Pro nullam voluptatum an. Cu pro nostro adolescens.</p>",
+				"summaryImage": {
+					"samp": true,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "automation-image-100.jpg",
+					"src": "automation-image.jpg",
+					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
+				},
+				"url": ".html#favorites",
+				"related": [ 2, 3, 6]
+			},
+			{
+				"id": 3,
+				"shortTitle": "Labores accusam assueverit",
+				"title": "Labores accusam assueverit | Wed Development",
+				"favorite": true,
+				"content": "",
+				"summary": "<p>Et per alia ponderum, sint autem hendrerit vim eu. Pro nullam voluptatum an. Cu pro nostro adolescens.</p>",
+				"summaryImage": {
+					"samp": true,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "automation-image-100.jpg",
+					"src": "automation-image.jpg",
+					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
+				},
+				"url": ".html#favorites",
+				"related": [ 2, 3, 6]
+			},
+			{
+				"id": 4,
+				"shortTitle": "Labores accusam assueverit",
+				"title": "Labores accusam assueverit | Wed Development",
+				"favorite": false,
+				"content": "",
+				"summary": "<p>Et per alia ponderum, sint autem hendrerit vim eu. Pro nullam voluptatum an. Cu pro nostro adolescens.</p>",
+				"summaryImage": {
+					"samp": true,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "automation-image-100.jpg",
+					"src": "automation-image.jpg",
+					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
+				},
+				"url": ".html#favorites",
+				"related": [ 2, 3, 6]
+			},
+			{
+				"id": 5,
+				"shortTitle": "Sint autem hendrerit vim",
+				"title": "Sint autem hendrerit vim | Wed Development",
+				"favorite": true,
+				"content": "",
+				"summary": "<p>Et per alia ponderum, sint autem hendrerit vim eu. Pro nullam voluptatum an. Cu pro nostro adolescens.</p>",
+				"summaryImage": {
+					"samp": true,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "automation-image-100.jpg",
+					"src": "automation-image.jpg",
+					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
+				},
+				"url": ".html#favorites",
+				"related": [ 2, 3, 6]
+			},
+			{
+				"id": 6,
+				"shortTitle": "Sint autem hendrerit vim",
+				"title": "Sint autem hendrerit vim | Wed Development",
+				"favorite": false,
+				"content": "",
+				"summary": "<p>Et per alia ponderum, sint autem hendrerit vim eu. Pro nullam voluptatum an. Cu pro nostro adolescens.</p>",
+				"summaryImage": {
+					"samp": true,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "automation-image-100.jpg",
+					"src": "automation-image.jpg",
+					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
+				},
+				"url": ".html#favorites",
+				"related": [ 2, 3, 6]
+			},
+			{
+				"id": 7,
+				"shortTitle": "An image with screen with tools",
+				"title": "An image with screen with tools | Wed Development",
+				"favorite": true,
+				"content": "",
+				"summary": "<p>Et per alia ponderum, sint autem hendrerit vim eu. Pro nullam voluptatum an. Cu pro nostro adolescens.</p>",
+				"summaryImage": {
+					"samp": true,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "automation-image-100.jpg",
+					"src": "automation-image.jpg",
+					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
+				},
+				"url": ".html#favorites",
+				"related": [ 2, 3, 6]
 			}
 		]
 	},

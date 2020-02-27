@@ -36,14 +36,21 @@
 		}
 
 		&:invalid, &.js--input-error {
-			box-shadow: 0 0 5px 2px #{$warning};
-			border-color: $warning;
+			box-shadow: 0 0 5px 2px #{$danger};
+			border-color: $danger;
 		}
 
 		&:focus {
 			transition: box-shadow 0.3s linear;
 			box-shadow: 0 0 3px 3px #{$primary};
 			border-color: $primary;
+		}
+	}
+
+	&-check {
+		&-group {
+			margin-top: -5px;
+			margin-bottom: 5px;
 		}
 	}
 

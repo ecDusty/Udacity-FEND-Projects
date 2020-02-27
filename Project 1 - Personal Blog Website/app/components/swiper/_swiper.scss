@@ -4,4 +4,58 @@
 	&-container {
 		overflow: visible;
 	}
+
+	&-button {
+		&-prev, &-next {
+			color: $primary;
+			transition: box-shadow 0.25s ease-out, background 0.25s ease-out;
+			box-shadow: 0 0 0 0 transparent;
+			background:transparent;
+			border-radius: 50%;
+			width: 48px;
+			height: 48px;
+			&:hover {
+				box-shadow: 0 0 2px 5px #{$shadow};
+				background: $shadow;
+				color: $info;
+			}
+
+			@include media-breakpoint-down('xs') {
+				display: none;
+			}
+		}
+		&-prev {
+			left: -30px;
+			padding: 5px 5px 5px 0
+		}
+
+		&-next {
+			right: -30px;
+			padding: 5px 0 5px 5px;
+		}
+	}
+
+	&-pagination {
+		position: relative;
+		margin-top: 35px;
+
+		&-bullet {
+			border-top-right-radius: 0%;
+			border-bottom-right-radius: 0%;
+			border-top-left-radius: 60%;
+			border-bottom-left-radius: 60%;
+			transition: border-radius 0.25s ease-out;
+			width: 18px;
+			height: 18px;
+			&-active {
+				& ~ .swiper-pagination-bullet {
+					border-top-left-radius: 0%;
+					border-bottom-left-radius: 0%;
+					border-top-right-radius: 60%;
+					border-bottom-right-radius: 60%;
+				}
+				border-radius: 0;
+			}
+		}
+	}
 }

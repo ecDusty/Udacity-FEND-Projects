@@ -1,0 +1,13 @@
+@each $name, $color in $theme-colors {
+	.bg-fade-#{$name} {
+		background: linear-gradient(224deg, #ced4da 0%, #{$color} 50%, #ced4da 100%);
+		background-size: 500% 500%;
+		animation: bg-fade 5s ease infinite;
+	}
+}
+
+@keyframes bg-fade {
+    0% { background-position:97% 0% }
+    50% { background-position:4% 100% }
+    100% { background-position:97% 0% }
+}

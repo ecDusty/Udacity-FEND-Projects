@@ -1,37 +1,42 @@
 {% extends "../templates/_layout.njk" %}
-{% import '../templates/parts/header/_header.njk' as header %}
-{% import '../templates/parts/favorites-bar/_favorites.njk' as favBar %}
+
+{% set pageId = 0 %}
 
 {% block head %}
-	<title>{{ siteTitle }}</title>
+	<title>{{ g_title }}</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="{{ siteDescription }}">
 {% endblock %}
 
 {% block header %}
-{{ header.renderHeader('home', headerEl) }}
+{{ header.renderHeader(pageId, headerEl, pages) }}
 {% endblock %}
 
 {% block content %}
-<section class="my-3 my-sm-4 my-md-5 px-xs-3 px-sm-4 px-md-5">
+<section class="px-xs-3 px-sm-4 px-md-5">
 	<div class="my-3 text-center">
 		<h1 class="mb-3">unlikely IT</h1>
-		<p>I'm trying to add more content to nunjucks /n TESTING!</p>
+		<h3>WE SPEAK I.T., BUT WE ALSO SPEAK HUMAN</h3>
+		<p>We create user-friendly responsive websites, consult on IT systems and operations, and solve every day IT problems.</p>
 	</div>
 </section>
-<section class="my-3 my-sm-4 my-md-5 px-sm-4 px-xs-3 px-md-5 favorites">
-	<div class="py-3" >
+<section id="Favorites" class="px-sm-4 px-xs-3 px-md-5 favorites">
+	<div class="pb-3" >
 		<h2>Tech Times Favorites</h2>
+		<p>Take a look at all our <a href="/tech-times.html">Times here >></a></p>
 	</div>
-	<div class="contianer">
+	<div class="container">
 		<div class="row swiper-container">
 			<div class="swiper-wrapper">
-				{{ favBar.render(news) }}
+				{{ card.renderCard(news, true, false, false) }}
 			</div>
+			<!-- If we need pagination -->
+			<div class="swiper-pagination"></div>
+
+			<!-- If we need navigation buttons -->
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
 		</div>
 	</div>
 </section>
-
-<h1>HELP ME OUT!</h1>
-<p>I'm trying to add more content to nunjucks /n TESTING!</p>
 {% endblock %}
