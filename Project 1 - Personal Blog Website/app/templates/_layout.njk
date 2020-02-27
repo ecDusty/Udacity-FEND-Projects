@@ -1,3 +1,6 @@
+{% extends "../templates/_globals.njk" %}
+
+{% block html %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +11,10 @@
 		<title>My site</title>
 		<meta name="keywords" content="">
 		<meta name="description" content="">
+	{% endblock %}
+
+	{% block favicon %}
+		<link rel="shortcut icon" type="image/x-icon" href="/app/img/favicon/favicon.ico">
 	{% endblock %}
 
 	<!-- Requied Preconnect -->
@@ -30,7 +37,9 @@
 	{% endblock %}
 
 	<main class="main">
+		<div class="px-3">
 		{% block content %} {% endblock %}
+		</div>
 	</main>
 
 	{% block aside %}
@@ -42,3 +51,4 @@
 
 </body>
 </html>
+{% endblock %}
