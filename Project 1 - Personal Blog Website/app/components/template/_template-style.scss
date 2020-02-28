@@ -121,10 +121,6 @@
 			overflow: hidden;
 		}
 
-		.header, .footer {
-			@include padd-gutter();
-		}
-
 		&.grid-aside {
 			.main, .aside {
 				grid-column: 1 / 4;
@@ -257,6 +253,16 @@
  *   These styles are loaded from bootstrap library
  */
 
+.p {
+	&x {
+		opacity: 1;
+
+		&-15-px {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+}
 
 
 /*!
@@ -349,3 +355,33 @@
 	}
 }
 
+
+
+/*!
+ * Image styles
+ *
+ */
+ figure {
+	margin: 1.5rem 1.5rem;
+ }
+
+ figcaption {
+	 font-size: 90%;
+	font-style: italic;
+	padding-left: 15px;
+ }
+
+/*!
+ * Lists styles
+ *
+ */
+
+.list-reset {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+	vertical-align: baseline;
+	list-style: none;
+}

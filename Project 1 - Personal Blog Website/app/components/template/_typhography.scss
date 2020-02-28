@@ -63,6 +63,39 @@ h4 { font-size: $h4-font-size; }
 h5 { font-size: $h5-font-size; }
 h6 { font-size: $h6-font-size; }
 
+i { font-style: italic; }
+b { font-weight: 700; }
+
+blockquote {
+	font-family: $headings-font-family;
+	color: $headings-color;
+    font-size: 160%;
+	position: relative;
+	width: 80%;
+	margin: 2.8rem auto;
+	&::before, &::after {
+		content: '"';
+		font-size: 160%;
+		display: block;
+		font-style: italic;
+		line-height: 1;
+		transform: rotate(180deg);
+		position: absolute;
+	}
+	&::before {
+		top: -20px;
+		left: -15px;
+	}
+	&::after {
+		bottom: -5px;
+		right: -15px;
+	}
+}
+
+small {
+	font-size: 80%;
+}
+
 .visually-hidden {
 	border: 0;
 	clip: rect(0 0 0 0);

@@ -1,13 +1,25 @@
 {% import "../../_globals.njk" as global %}
 <footer class="footer pb-5">
-	<div class="gCol-12">
+	<div class="gCol-12 px-15-px">
 	<div class="footer-pre flex-row py-3">
 		{% include "../pre-footer/_newsletter-subscribe.njk" %}
 	</div>
 	</div>
 	<div class="footer-menu gCol-12 pt-5 pb-3">
-		Footer menu with logo area
+		<div class="footer-menu">
+			<div class="footer-logo pl-0">
+				<a href="{{ headerEl.logo.link }}">
+					{% if headerEl.logo.useSvg %}
+						<img src="{{ headerEl.logo.svg }}" alt="{{ headerEl.logo.altText }}" />
+					{% endif %}
+				</a>
+			</div>
+		</div>
 	</div>
-	<div class="gCol-12 gCol-sm-6-start py-3">Secondary row of footer</div>
-	<div class="gCol-12 gCol-sm-6-end py-3">Secondary row of footer</div>
+	<div class="gCol-12 gCol-sm-6-start py-3 px-15-px pr-sm-0">
+		<ul class="Social flex-row">
+			<li>
+		</ul>
+		Secondary row of footer</div>
+	<div class="gCol-12 gCol-sm-6-end py-3 px-15-px pl-sm-0">Secondary row of footer</div>
 </footer>

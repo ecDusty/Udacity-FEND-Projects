@@ -13,7 +13,7 @@
 			<label id="nav-toggle-switch" for="open-nav-toggle">
 				<span></span><span></span>
 			</label>
-			<ul class="nav-list flex-row">
+			<ul class="nav-list flex-row list-reset">
 			{% for item in pages %}
 				{% if item.mainNav %}
 				<li class="nav-list-item {%if activePage == item.id %}active{% endif %}">

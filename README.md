@@ -13,8 +13,8 @@ I build with a gulp environment. Here I can test my site within a local developm
 3) Please wait for all assets to load.
 
 4) Now I've created npm run commands that make using my gulp setup a bit easier. Please see the list here, and what they do:
-  *  ```npm run dev```: "gulp --env=localDev",
-  *  ```npm run live``` : Create the live version of your project. This will produced minified CSS, JS, HTML, and will shrink the images included in the project.
+  *  ```npm run dev```: This cleans out the distribution folder, then builds a dev version of your site, creating the CSS, JS, and html files that still have comments & source maps to make life easy while developing
+  *  ```npm run live``` : Cleans out the distribution folder, then creates the live version of your project. This will produced minified CSS, JS, HTML, and will shrink the images included in the project.
   *  ```npm run cleanup``` : Delete your current **dist** folder.
   *  ```npm run sass``` : Build just your CSS files of the project.
   *  ```npm run html``` : This will build out the html files of your project.

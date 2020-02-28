@@ -17,8 +17,8 @@
 {% endblock %}
 
 {% block content %}
-<article class="">
-	<header>
+<article class="news-article">
+	<header class="mt-5 pt-3">
 		<h1>{{ news.list[artID].shortTitle }}</h1>
 		<h3>Web Development</h3>
 	</header>
@@ -27,8 +27,22 @@
 			{{ item | safe }}
 		{% endfor %}
 	</section>
-	<footer>
-		<h5><small>author:</small>{{ item.list[artID].author }}</h5>
+	<footer class="my-4">
+		<h5><small>author:</small>{{ news.list[artID].author }}</h5>
+		<div class="social-share contianer-flex mt-5">
+			<h5>Share on social media:</h5>
+			<ul class="flex-row social-share-list list-reset">
+				<li class="social-share-item py-3">
+					<b><a href="https://www.linkedin.com/sharing/share-offsite/?url=https://ecdusty.github.com{{ news.linkBase}}{{ news.list[artID].url }}">Linkedin</a></b>
+				</li>
+				<li class="social-share-item py-3">
+					<b><a href="https://twitter.com/intent/tweet?text={{ news.list[artID].title }},%20unlikely%20IT&url=https://ecdusty.github.com{{ news.linkBase}}{{ news.list[artID].url }}">Twitter</a></b>
+				</li>
+				<li class="social-share-item py-3">
+					<b><a href="https://www.facebook.com/sharer/sharer.php?u=https://ecdusty.github.com{{ news.linkBase}}{{ news.list[artID].url }}" rel="nofollow noopenner noreferrer">Facebook</a></b>
+				</li>
+			</ul>
+		</div>
 	</footer>
 </article>
 {% endblock %}
