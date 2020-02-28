@@ -58,7 +58,6 @@ const config = {
 };
 
 
-
 // Config BrowserSync config object
 config.browserSync = {
 	server: config.browserSyncServerDir,
