@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block content %}
-<section class="px-3">
+<section class="">
 	<h1>{{ pages[pageId].name }}</h1>
 	<div class="container">
 		<div class="flex-row">
@@ -28,7 +28,7 @@
 {% block aside %}
 <aside class="aside">
 	<h3>Favorites</h3>
-	<div class="aside-favorites">
+	<div class="aside-favorites flex-row">
 		{{ card.renderCard(news, true, false, true)}}
 	</div>
 </aside>

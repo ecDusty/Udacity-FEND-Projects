@@ -74,10 +74,14 @@
 				},
 				"content": [
 					"<p>I’ve been a Web developer for just under 6 years now, and the item that gave me the biggest “💡Ah Ha” moment was when I discovered the developers tool kit. This isn’t the Text editor, color & text theme, hardware setup, working space layout, or a special office.</p>",
-					"<h3>Welcome to the world of Workflow Automation 🤯</h3>"
+					"<h3>Welcome to the world of Workflow Automation 🤯</h3>",
+					"<figure><img class='lazyload w-100' src='/app/img/gulp-grunt-100.png' data-src='/app/img/gulp-grunt.png' alt='Gulp and Grunt logos, side by side with a divider inbetween. 2 prevailing automation tools. Unlikely IT Hong Kong'><figurecaption>Two prevailing JavaScript task runners, used for automation</figurecaption</figure>",
+					"<p>The two primary contendors for automating your development workflow is <a href='https://gulpjs.com/' rel='noopenner nofollow'>Gulp</a> and <a href='https://gruntjs.com/' rel='noopenner nofollow'>Grunt</a>. Of these two we'll focus on Gulp as thats where all our experience lies.</p>","<blockquote>Once you start automating your workflow, you can never go back</blockquote>",
+					"<p>I'll walk you through my standard gulp setup, how it was put together, and how it works. Think of this as a how to get started guide.</p>"
 				],
 				"url": "/automating-your-workflow---wed-development.html",
-				"related": [ 2, 3, 6]
+				"related": [ 2, 3, 6],
+				"author": "Erin Macalligan"
 			},
 			{
 				"id": 1,
@@ -95,7 +99,8 @@
 					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
 				},
 				"url": ".html#favorites",
-				"related": [ 2, 3, 6]
+				"related": [ 2, 3, 6],
+				"author": "Erin Macalligan"
 			},
 			{
 				"id": 2,
@@ -113,7 +118,8 @@
 					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
 				},
 				"url": ".html#favorites",
-				"related": [ 2, 3, 6]
+				"related": [ 2, 3, 6],
+				"author": "Erin Macalligan"
 			},
 			{
 				"id": 3,
@@ -131,7 +137,8 @@
 					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
 				},
 				"url": ".html#favorites",
-				"related": [ 2, 3, 6]
+				"related": [ 2, 3, 6],
+				"author": "Erin Macalligan"
 			},
 			{
 				"id": 4,
@@ -149,7 +156,8 @@
 					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
 				},
 				"url": ".html#favorites",
-				"related": [ 2, 3, 6]
+				"related": [ 2, 3, 6],
+				"author": "Erin Macalligan"
 			},
 			{
 				"id": 5,
@@ -167,7 +175,8 @@
 					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
 				},
 				"url": ".html#favorites",
-				"related": [ 2, 3, 6]
+				"related": [ 2, 3, 6],
+				"author": "Erin Macalligan"
 			},
 			{
 				"id": 6,
@@ -185,7 +194,8 @@
 					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
 				},
 				"url": ".html#favorites",
-				"related": [ 2, 3, 6]
+				"related": [ 2, 3, 6],
+				"author": "Erin Macalligan"
 			},
 			{
 				"id": 7,
@@ -203,7 +213,8 @@
 					"alt": "Automation toolkit for web developers, an image with screen with tools floating around it."
 				},
 				"url": ".html#favorites",
-				"related": [ 2, 3, 6]
+				"related": [ 2, 3, 6],
+				"author": "Erin Macalligan"
 			}
 		]
 	},

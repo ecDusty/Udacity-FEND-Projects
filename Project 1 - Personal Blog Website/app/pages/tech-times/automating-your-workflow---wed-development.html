@@ -17,20 +17,27 @@
 {% endblock %}
 
 {% block content %}
-<section class="px-3">
-	<h1>{{ news.list[artID].shortTitle }}</h1>
-	<h3>Web Development</h3>
-	{% for item in news.list[artID].content %}
-		{{ item | safe }}
-	{% endfor %}
-</section>
+<article class="">
+	<header>
+		<h1>{{ news.list[artID].shortTitle }}</h1>
+		<h3>Web Development</h3>
+	</header>
+	<section>
+		{% for item in news.list[artID].content %}
+			{{ item | safe }}
+		{% endfor %}
+	</section>
+	<footer>
+		<h5><small>author:</small>{{ item.list[artID].author }}</h5>
+	</footer>
+</article>
 {% endblock %}
 
 {% block aside %}
 <aside class="aside">
 	<div class="aside-content">
-		<h3>Related Tech</h3>
-		<div class="aside-favorites row">
+		<h3 class="mb-3">Related Tech</h3>
+		<div class="aside-favorites row flex-row">
 			{{ card.renderCard(news, false, false, true, true) }}
 		</div>
 	</div>

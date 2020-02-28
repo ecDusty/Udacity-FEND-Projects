@@ -214,7 +214,6 @@
 .flex-row {
 	display: flex;
 	@include marg-gutter();
-	height: 100%;
 	flex-wrap: wrap;
 
 	> * {

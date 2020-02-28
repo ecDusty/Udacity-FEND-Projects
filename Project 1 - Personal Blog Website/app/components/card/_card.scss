@@ -61,8 +61,24 @@
 	}
 }
 
+// The Aside cards styles
 .card-mini {
 	&:nth-child(n+4) {
 		display: none;
+	}
+
+	.card-title {
+		font-size: 1.5rem;
+		height: 56px;
+	}
+
+	.card-content {
+		font-size: 0.8em;
+		border: 1px solid #eae9e9;
+		background: #eae9e9;
+	}
+
+	.card-details {
+		height: 80px;
 	}
 }

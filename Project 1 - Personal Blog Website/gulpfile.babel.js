@@ -84,16 +84,19 @@ log(colors.cyan('config.browserSync: '), config.browserSync);
  * @nada - Empty function that always the stream content to continue
  * @initBrowserSync - Initializes BrowserSync, creating a local server
  * 		to host the development files, which gives you the ability to
- * 		test your website build
- * @sass - Compiles all the root SASS files, to produce the usable CSS
+ * 		test your website build.
+ * @sass - Compiles all the root SASS files, to produce the usable CSS.
  * @js - Compiles all the root JS files, to produce the usable main.js file.
- * 		This also initiates
+ * 		This also initiates the BrowserSync functionality (Creating a local hosted site).
+ * @jsVendor - Takes all the vendor js code and place in within the vendor folder.
+ * 		No compiling or anything is done, it just moves the files. The reason for
+ * 		this is because the scripts are already minified, and just need to be sorted.
  * @images - For 'localDev', this moves images to 'dist/img/' folder. The reason
  * 		for this is to save, and shorten processing time. With
- * 		'production', the images will be minified and moved
+ * 		'production', the images will be minified and moved.
  * @html - Compiles all the nunjucks templates into usable HTML pages, and
  * 		places them into the base 'dist/' folder for hosting.
- * @fonts - Moves all fonts to base font folder. 'dist/fonts'
+ * @fonts - Moves all fonts to base font folder. 'dist/fonts'.
  * @cleanUp - Deletes the dist folder. Helpful to ensure all files are only the
  * 		most updated version, and saving space when not actively developing.
  * @watchFiles - Watch for source file changes, and trigger a recreate & resync.

@@ -2,7 +2,7 @@
 {% for item in news.list %}
 {% if fav %}
 	{% if item.favorite %}
-	<div class="{% if listing %}col-12 col-sm-6 my-3 col-xl-4 col-xxl-3 {% elif mini %}card-mini mb-3{% else %}swiper-slide{% endif %}">
+	<div class="{% if listing %}col-12 col-sm-6 my-3 col-xl-4 col-xxl-3 {% elif mini %}card-mini mb-3 col-6 col-md-12{% else %}swiper-slide{% endif %}">
 		{% if mini %}{% else %}<div class="card">{% endif %}
 			<div class="card-img-wrap lazyload" data-bg="{% if item.summaryImage.samp %}{{ item.summaryImage.sample }}{% else %}{{ item.summaryImage.src }}{% endif %}">
 				<img class="card-img" src="{% if item.summaryImage.samp %}{{ item.summaryImage.sampleSM }}{% else %}{{ item.summaryImage.srcSM }}{% endif %}" alt="{{ item.summaryImage.alt }} -- unlikely IT's Web Dev Domain, Hong Kong">
@@ -21,7 +21,7 @@
 {% elif related %}
 	{% for relItem in item.related %}
 	{% if relItem == item.id %}
-	<div class="{% if listing %}col-12 col-sm-6 my-3 col-xl-4 col-xxl-3 {% elif mini %}card-mini mb-3{% else %}swiper-slide{% endif %}">
+	<div class="{% if listing %}col-12 col-sm-6 my-3 col-xl-4 col-xxl-3 {% elif mini %}card-mini mb-3 col-6 col-md-12{% else %}swiper-slide{% endif %}">
 		{% if mini %}{% else %}<div class="card">{% endif %}
 			<div class="card-img-wrap lazyload" data-bg="{% if item.summaryImage.samp %}{{ item.summaryImage.sample }}{% else %}{{ item.summaryImage.src }}{% endif %}">
 				<img class="card-img" src="{% if item.summaryImage.samp %}{{ item.summaryImage.sampleSM }}{% else %}{{ item.summaryImage.srcSM }}{% endif %}" alt="{{ item.summaryImage.alt }} -- unlikely IT's Web Dev Domain, Hong Kong">
@@ -39,7 +39,7 @@
 	{% endif %}
 	{% endfor %}
 {% else %}
-	<div class="{% if listing %}col-12 col-sm-6 my-3 col-xl-4 col-xxl-3 {% elif mini %}card-mini mb-3{% else %}swiper-slide{% endif %}">
+	<div class="{% if listing %}col-12 col-sm-6 my-3 col-xl-4 col-xxl-3 {% elif mini %}card-mini mb-3 col-6 col-md-12{% else %}swiper-slide{% endif %}">
 		{% if mini %}{% else %}<div class="card">{% endif %}
 			<div class="card-img-wrap lazyload" data-bg="{% if item.summaryImage.samp %}{{ item.summaryImage.sample }}{% else %}{{ item.summaryImage.src }}{% endif %}">
 				<img class="card-img" src="{% if item.summaryImage.samp %}{{ item.summaryImage.sampleSM }}{% else %}{{ item.summaryImage.srcSM }}{% endif %}" alt="{{ item.summaryImage.alt }} -- unlikely IT's Web Dev Domain, Hong Kong">
