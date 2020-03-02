@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "gulp --env=localDev",
     "live": "gulp production --env=production",
-    "cleanup": "gulp clean",
+    "clean": "gulp cleanUp",
     "html": "gulp html --env=localDev"
   },
   "repository": {
