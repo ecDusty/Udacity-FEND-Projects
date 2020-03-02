@@ -1,0 +1,73 @@
+/*!
+ * BUTTON styles
+ *
+ */
+@mixin makeBtn($bgColor, $subBG, $color, $subColor) {
+	span {
+		background: linear-gradient(45deg, #{$color} 50%, #{$subColor} 50%);
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	&::after {
+		background: linear-gradient(45deg, #{$subBG} 50%, #{$bgColor} 50%);
+	}
+}
+
+
+.btn {
+	border: none;
+	display: inline-block;
+	border-radius: 0;
+	font-weight: 700;
+	cursor: pointer;
+	background: transparent;
+	position: relative;
+	text-transform: uppercase;
+	text-shadow: none;
+
+	color: #fff;
+
+	span {
+		padding: 10px 15px;
+		max-width: 100%;
+		display: inline-block;
+		position: relative;
+		z-index: 1;
+	}
+
+	&-primary {
+		@include makeBtn(#{$primary}, #{$secondary}, #{$link-active}, #{$info});
+	}
+
+	&-secondary {
+		@include makeBtn(#{$secondary}, #{$info}, #{$danger}, #{$link-active})
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 0;
+	}
+
+	&, &::after, span {
+		background-size: 300%;
+		background-position: 100%;
+		transition: background 0.35s linear;
+	}
+
+	&:hover {
+		text-shadow: none;
+	}
+
+	&:hover span, &:hover::after {
+		background-position: 0;
+		font-size: 1em;
+
+		color: $info;
+	}
+}

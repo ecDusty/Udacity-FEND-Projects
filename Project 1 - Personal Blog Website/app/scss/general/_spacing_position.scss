@@ -1,0 +1,34 @@
+
+/**
+ * SPACING Default Styles
+ *   These styles are loaded from bootstrap library
+ */
+
+ .p {
+	&x {
+		opacity: 1;
+
+		&-15-px {
+			padding-left: 15px;
+			padding-right: 15px;
+		}
+	}
+}
+
+
+/*!
+ * POSTION & DISPLAY STYLING
+ *
+ *
+ */
+.pos {
+	&-relative {
+		position: relative;
+	}
+}
+
+.display {
+	&-none {
+		display: none;
+	}
+}

@@ -39,7 +39,7 @@
 			"subPages":true,
 			"subPageItems": [
 				{ "name":"udacity project 1", "url":"/#" },
-				{ "name":"udacity project 2", "url":"/#" }
+				{ "name":"udacity project 2", "url":"/projects/udacity-project-2.html" }
 			]
 		}
 

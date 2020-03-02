@@ -1,0 +1,64 @@
+/*!
+ * BASE TEMPLATE Styles
+ * Here you'll find all the styles for the base
+ * level content that makes up the unlikely IT website.
+ */
+
+ * {
+	box-sizing: border-box;
+}
+
+.body {
+	font-size: $font-size-base;
+}
+
+.main section, aside.aside {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	@include media-breakpoint-up('sm') {
+		margin-top: 45px;
+		margin-bottom: 45px;
+	}
+
+	@include media-breakpoint-up('md') {
+		margin-top: 55px;
+		margin-bottom: 55px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+
+	@include media-breakpoint-up('lg') {
+		margin-top: 70px;
+		margin-bottom: 70px;
+		padding-top: 25px;
+		padding-bottom: 25px;
+	}
+}
+
+.aside {
+	&-content {
+		@include media-breakpoint-up('md') {
+			position: sticky;
+			top: 0;
+		}
+	}
+}
+
+
+/*!
+ * Lists styles
+ *
+ */
+
+.list-reset {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+	vertical-align: baseline;
+	list-style: none;
+}
