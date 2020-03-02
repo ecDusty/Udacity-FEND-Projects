@@ -10,6 +10,11 @@
 
 .body {
 	font-size: $font-size-base;
+	color: $body-color;
+}
+
+.main {
+	background-color: $body-bg;
 }
 
 .main section, aside.aside {
