@@ -309,7 +309,7 @@ exports.html = series(
 );
 
 // Clean up production
-exports.cleanup = series(cleanUp);
+exports.cleanUp = series(cleanUp);
 
 // Create CSS files
 exports.sass = series(css);
