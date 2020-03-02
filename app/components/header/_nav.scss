@@ -124,6 +124,7 @@
 	 * DESKTOP STYLES
 	 */
 	@include media-breakpoint-up('md') {
+
 		&-list {
 			position: relative;
 			background: $primary;
@@ -132,15 +133,16 @@
 			flex-wrap: nowrap;
 			flex-direction: row;
 			padding-top: 0;
-			border-top: 0px solid transparent;
-			border-bottom: 0px solid $warning;
-
-			&.active {
-				a {
-					border-right: 0px solid transparent;
-					border-left: 0px solid $warning;
-					border-top: 7px solid transparent;
-					border-bottom: 7px solid $warning;
+			&-item {
+				border-top: 0px solid transparent;
+				border-bottom: 0px solid $warning;
+				&.active {
+					a {
+						border-right: 0px solid transparent;
+						border-left: 0px solid $warning;
+						border-top: 7px solid transparent;
+						border-bottom: 7px solid $warning;
+					}
 				}
 			}
 
@@ -160,6 +162,5 @@
 		#nav-toggle-switch {
 			display: none;
 		}
-
 	}
 }

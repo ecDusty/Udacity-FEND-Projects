@@ -1,24 +1,74 @@
 {
-  "name": "udacity--front-end--developer--degree",
-  "version": "1.0.0",
-  "description": "Front-End Developer program with Udacity",
-  "main": "index.js",
+  "name": "udacity-front-end-nano-degree-program",
+  "version": "1.0.4",
+  "description": "A test to prove skills with using HTML & CSS code.",
+  "main": "gulpfile.babel.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp --env=localDev",
+    "live": "gulp production --env=production",
+    "cleanup": "gulp clean",
+    "html": "gulp html --env=localDev"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ecDusty/Udacity-FEND-Projects.git"
   },
   "keywords": [
-    "Training",
-    "Udacity",
-    "FEND"
+    "FEND",
+    "Project",
+    "1",
+    "Personal",
+    "blog",
+    "website"
   ],
   "author": "Erin Macalligan",
-  "license": "REFER TO FILE LICENSE.md",
+  "license": "REFER TO FILE IN ROOT FOLDER, LICENSE.md",
   "bugs": {
     "url": "https://github.com/ecDusty/Udacity-FEND-Projects/issues"
   },
-  "homepage": "https://github.com/ecDusty/Udacity-FEND-Projects#readme"
+  "homepage": "https://github.com/ecDusty/Udacity-FEND-Projects#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/register": "^7.8.3",
+    "acorn": "^7.1.0",
+    "ansi-colors": "^4.1.1",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "fancy-log": "^1.3.3",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-bro": "^2.0.0",
+    "gulp-cached": "^1.1.1",
+    "gulp-data": "^1.3.1",
+    "gulp-flatten": "^0.4.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-nunjucks": "^5.0.1",
+    "gulp-nunjucks-render": "^2.2.3",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-inheritance": "^1.1.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "imagemin-pngquant": "^8.0.0",
+    "minimist": "^1.2.0",
+    "node-notifier": "^6.0.0",
+    "through2": "^3.0.1",
+    "vinyl-buffer": "^1.0.1"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.8.3",
+    "bootstrap": "^4.4.1",
+    "dom7": "^2.1.3",
+    "framework7": "^5.4.5",
+    "gulp": "^4.0.2",
+    "lazysizes": "^5.2.0",
+    "swiper": "^5.3.1"
+  }
 }

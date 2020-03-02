@@ -277,7 +277,7 @@ function watchFiles() {
 		`${config.nunjucks.data}*.json`
 	],
 	series(html));
-	watch(`${config.app}**/*.{jpg,jpeg,svg,png,gif}`, series(images));
+	// watch(`${config.app}**/*.{jpg,jpeg,svg,png,gif}`, series(images));
 	watch(`${config.app}**/*.ico`, series(favicon));
 	watch(`${config.app}**/*.scss`, series(css));
 	watch(`${config.app}**/*.js`, series(js, jsVendor));
