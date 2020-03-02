@@ -8,7 +8,10 @@
 			"url": "/",
 			"mainNav": false,
 			"footerNav": false,
-			"folder": false
+			"folder": false,
+			"meta": {
+				"desc": "Discover our favorite tid bits from around the tech community. Something to tickle those neurons."
+			}
 		},
 		{
 			"id": 1,
@@ -16,7 +19,10 @@
 			"url":"/tech-roundup.html",
 			"mainNav": true,
 			"footerNav": true,
-			"folder": false
+			"folder": false,
+			"meta": {
+				"desc": "Discover our favorite tid bits from around the tech community. Something to tickle those neurons."
+			}
 		},
 		{
 			"id": 2,
@@ -28,19 +34,25 @@
 			"folderItems": [
 				{ "name":"Web App", "url": "/#" },
 				{ "name":"Store Web App", "url": "/#" }
-			]
+			],
+			"meta": {
+				"desc": "Let us help you expand the digital realm of your business."
+			}
 		},
 		{
 			"id": 3,
 			"name":"Projects",
-			"url":"/#",
+			"url":"/projects.html",
 			"mainNav": true,
 			"footerNav": true,
 			"subPages":true,
 			"subPageItems": [
-				{ "name":"udacity project 1", "url":"/#" },
-				{ "name":"udacity project 2", "url":"/projects/udacity-project-2.html" }
-			]
+				{ "name":"Responsive Website", "url":"/projects.html" },
+				{ "name":"Landing Page Functions", "url":"/projects/landing-page.html" }
+			],
+			"meta": {
+				"desc": "Discover the projects we've been involved in. These includ projects builts from scratch on ones own, and those with other teams."
+			}
 		}
 
 	],
@@ -53,9 +65,51 @@
 			"link": "/"
 		}
 	},
+	"projects": {
+		"name": "Udacity Front-End Developer Projects",
+		"linkBase": "/projects",
+		"list": [
+			{
+				"id": 0,
+				"shortTitle": "A Responsive website",
+				"title": "Build a responsive website | FEND Project",
+				"favorite": false,
+				"summary": "<p>Tested skills at HTML & CSS and built a responsive website. There is no link, as this entire website started from this build.</p>",
+				"meta": "Tested skills at HTML & CSS and built a responsive website. There is no link, as this entire website started from this build",
+				"imgPlaceHolder": "/app/img/card-img-placeholder.png",
+				"summaryImage": {
+					"samp": false,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "/app/img/automation-image-100.jpg",
+					"src": "/app/img/automation-image.jpg",
+					"alt": "A photo of this website's homepage, as this project started the build for this website."
+				},
+				"url": "/landing-page.html"
+			},
+			{
+				"id": 1,
+				"shortTitle": "Landing Page build",
+				"title": "Landing Page build | FEND Project",
+				"favorite": false,
+				"summary": "<p>Building an interactive page is the corner stone of being a web developer. Here we have a landing page example showcasing that.</p>",
+				"meta": "Building an interactive page is the corner stone of being a web developer. Here we have a landing page example showcasing that.",
+				"imgPlaceHolder": "/app/img/card-img-placeholder.png",
+				"summaryImage": {
+					"samp": false,
+					"sampleSM": "/app/img/card-img-placeholder.png",
+					"sample": "https://picsum.photos/700/469",
+					"srcSM": "/app/img/automation-image-100.jpg",
+					"src": "/app/img/automation-image.jpg",
+					"alt": "Landing page website build example photo, showing a small glimps what the webpage looks like."
+				},
+				"url": "/landing-page.html"
+			}
+		]
+	},
 	"news": {
-		"newsName": "Tech Times",
-		"linkBase": "/tech-times",
+		"newsName": "Tech Roundup",
+		"linkBase": "/tech-roundup",
 		"list": [
 			{
 				"id": 0,

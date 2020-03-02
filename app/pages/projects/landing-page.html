@@ -1,0 +1,34 @@
+{% extends "../templates/_layout.njk" %}
+
+{% set pageId = 1 %}
+
+{% block head %}
+	<title>{{ projects.list[pageId].title }} | {{ siteTitle }}</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="{{ projects.list[pageId].meta }}">
+{% endblock %}
+
+{% block body %}grid grid-row-main grid-col-main {% endblock %}
+
+{% block header %}
+{{ header.renderHeader(pageId, headerEl, pages) }}
+{% endblock %}
+
+{% block content %}
+<section class="bg-section" >
+	<div class="px-3 px-md-4 px-lg-5">
+		<h1>{{ projects.list[pageId].title }}</h1>
+	</div>
+</section>
+<section class="projects px-3 px-md-4 px-lg-5">
+</section>
+{% endblock %}
+
+{% block aside %}
+<!-- <aside class="aside">
+	<h3>Favorites</h3>
+	<div class="aside-favorites flex-row">
+		{{ card.renderCard(projects, true, false, true)}}
+	</div>
+</aside> -->
+{% endblock %}

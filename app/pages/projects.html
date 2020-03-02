@@ -8,28 +8,33 @@
 	<meta name="description" content="{{ pages[pageId].meta.descr }}">
 {% endblock %}
 
-{% block body %}grid grid-row-main grid-col-main grid-aside{% endblock %}
+{% block body %}grid grid-row-main grid-col-main {% endblock %}
 
 {% block header %}
 {{ header.renderHeader(pageId, headerEl, pages) }}
 {% endblock %}
 
 {% block content %}
-<section class="articles">
-	<h1>{{ pages[pageId].name }}</h1>
-	<div class="container">
+<section class="bg-section" >
+	<div class="px-3 px-md-4 px-lg-5">
+		<h1>{{ pages[pageId].name }}</h1>
+	</div>
+</section>
+<section class="projects px-3 px-md-4 px-lg-5">
+	<h2>Udacity Front-End Developer Projects</h2>
+	<div class="container-flex">
 		<div class="flex-row">
-			{{ card.renderCard(news, false, true, false) }}
+			{{ card.renderCard(projects, false, true, false) }}
 		</div>
 	</div>
 </section>
 {% endblock %}
 
 {% block aside %}
-<aside class="aside">
+<!-- <aside class="aside">
 	<h3>Favorites</h3>
 	<div class="aside-favorites flex-row">
-		{{ card.renderCard(news, true, false, true)}}
+		{{ card.renderCard(projects, true, false, true)}}
 	</div>
-</aside>
+</aside> -->
 {% endblock %}
