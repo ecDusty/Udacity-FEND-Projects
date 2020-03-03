@@ -14,30 +14,40 @@ import {
 
 // =======
 // Custom Packages
-
 import del from 'del';
-import uglify from 'gulp-uglify';
-import sass from 'gulp-sass';
-import data from 'gulp-data';
-import autoprefixer from 'gulp-autoprefixer';
-import flatten from 'gulp-flatten';
-import browserSync from 'browser-sync';
 import buffer from 'vinyl-buffer';
-import sourcemaps from 'gulp-sourcemaps';
-import notifier from 'node-notifier';
-// import sftp from 'gulp-sftp-up4';
 import fs from 'fs';
+
+// Terminal packages
+import notifier from 'node-notifier';
 import parseArgs from 'minimist';
-import through from 'through2';
-import gulpif from 'gulp-if';
-import sassInheritance from 'gulp-sass-inheritance';
-import cached from 'gulp-cached';
-import bro from 'gulp-bro';
-import babelify from 'babelify';
-import imagemin from 'gulp-imagemin';
-import pngquant from 'imagemin-pngquant';
 import log from 'fancy-log';
 import colors from 'ansi-colors';
+
+// Gulp packages
+import through from 'through2';
+import gulpIf from 'gulp-if';
+import cached from 'gulp-cached';
+import data from 'gulp-data';
+import flatten from 'gulp-flatten';
+
+// CSS packages
+import sassInheritance from 'gulp-sass-inheritance';
+import sass from 'gulp-sass';
+import autoprefixer from 'gulp-autoprefixer';
+import sourcemaps from 'gulp-sourcemaps';
+
+// JS & Browsersync packages
+import bro from 'gulp-bro';
+import browserSync from 'browser-sync';
+import babelify from 'babelify';
+import uglify from 'gulp-uglify';
+
+// Image packages
+import imagemin from 'gulp-imagemin';
+import pngquant from 'imagemin-pngquant';
+
+// HTML packages
 import htmlmin from 'gulp-htmlmin';
 import nunjucksRender from 'gulp-nunjucks-render';
 
@@ -119,7 +129,7 @@ const initBrowserSync = () => browserSync.init(config.browserSync);
  */
 const css = () =>
 	src(`${config.app}/**/*.scss`)
-		.pipe(gulpif(global.syncWatching, cached('css')))
+		.pipe(gulpIf(global.syncWatching, cached('css')))
 		.pipe(sassInheritance({
 			dir: `${config.app}`
 		}))
@@ -162,7 +172,7 @@ const css = () =>
  */
 const jsVendor = () =>
 	src(`${config.app}/vendor/**/*.{js,min.js}`)
-		.pipe(gulpif(global.syncWatching, cached('jsVendor')))
+		.pipe(gulpIf(global.syncWatching, cached('jsVendor')))
 		.pipe(buffer())
 		.pipe((config.env === 'production')
 			? uglify()
@@ -187,7 +197,7 @@ const js = () =>
 				})
 			],
 		}))
-		.pipe(gulpif(global.syncWatching, cached('js')))
+		.pipe(gulpIf(global.syncWatching, cached('js')))
 		.pipe(buffer())
 		.pipe((config.env === 'production')
 			? uglify()
