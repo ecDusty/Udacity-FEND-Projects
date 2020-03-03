@@ -1,0 +1,80 @@
+.warning {
+	&-browser {
+		&-version {
+			// Hide scroll with IE
+			height: 100vh !important;
+			overflow: hidden;
+
+			&-window {
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 100;
+				background: rgba($primary, 0.95);
+				display: block;
+			}
+		}
+
+		&-content {
+			animation: fade-in 0.8s ease-out;
+			background: #fff;
+			max-width: 95%;
+			width: 100%;
+			max-height: 100vh;
+			margin: 0 auto;
+
+			h1 { margin-bottom: 20px; }
+
+			h2 {
+				color: $danger;
+				margin-bottom: 0;
+			}
+
+			h4 {
+				margin-top: 20px;
+			}
+
+			p {
+				max-width: 700px;
+				margin: 0 auto;
+			}
+
+			@include media-breakpoint-up('md') {
+				max-width: 80%;
+			}
+		}
+
+		&-list {
+			max-width: 400px;
+			width: 100%;
+			margin: 0 auto;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-around;
+
+			&-item {
+				width: 100px;
+				margin: 15px 10px;
+				img {
+					width: 89px;
+					margin: 0 auto;
+				}
+				// Style for firefox logo
+				&:nth-child(2) {
+					img { width: 78px; }
+				}
+				// Style for Chrome logo
+				&:nth-child(3) {
+					img { width: 78px; }
+				}
+			}
+		}
+	}
+}
+
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}

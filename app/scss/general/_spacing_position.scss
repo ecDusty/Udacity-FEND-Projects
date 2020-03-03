@@ -32,3 +32,13 @@
 		display: none;
 	}
 }
+
+/*!
+ * Visibility
+ *
+ */
+
+.hidden {
+	visibility: hidden;
+	opacity: 0;
+}

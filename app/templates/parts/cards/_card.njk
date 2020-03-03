@@ -13,7 +13,8 @@
 				<div class="card-details">
 				{{ item.summary|safe }}
 				</div>
-				<a href="{{news.linkBase }}{{ item.url }}"" class="btn btn-{% if mini %}primary{% else %}secondary{% endif %} card-btn"><span>Get more >></span></a>
+				<a href="{{ news.linkBase }}{{ item.url }}"" class="btn btn-{% if mini %}primary{% else %}secondary{% endif %} card-btn {% if item.url=='' %}hidden{% endif %}"><span>Get more >></span></a>
+
 			</div>
 		{% if mini %}{% else %}</div>{% endif %}
 	</div>
@@ -32,7 +33,7 @@
 				<div class="card-details">
 				{{ item.summary|safe }}
 				</div>
-				<a href="{{news.linkBase }}{{ item.url }}"" class="btn btn-{% if mini %}primary{% else %}secondary{% endif %} card-btn"><span>Get more >></span></a>
+				<a href="{{ news.linkBase }}{{ item.url }}"" class="btn btn-{% if mini %}primary{% else %}secondary{% endif %} card-btn {% if item.url=='' %}hidden{% endif %}"><span>Get more >></span></a>
 			</div>
 		{% if mini %}{% else %}</div>{% endif %}
 	</div>
@@ -50,7 +51,7 @@
 				<div class="card-details">
 				{{ item.summary|safe }}
 				</div>
-				<a href="{{news.linkBase }}{{ item.url }}"" class="btn btn-{% if mini %}primary{% else %}secondary{% endif %} card-btn"><span>Get more >></span></a>
+				<a href="{{ news.linkBase }}{{ item.url }}"" class="btn btn-{% if mini %}primary{% else %}secondary{% endif %} card-btn {% if item.url=='' %}hidden{% endif %}"><span>Get more >></span></a>
 			</div>
 		{% if mini %}{% else %}</div>{% endif %}
 	</div>
