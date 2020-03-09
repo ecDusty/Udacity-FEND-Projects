@@ -37,5 +37,4 @@ class MenuBuilder {
 	}
 }
 
-const buildMenu = new MenuBuilder();
-buildMenu.init();
+export default MenuBuilder;
