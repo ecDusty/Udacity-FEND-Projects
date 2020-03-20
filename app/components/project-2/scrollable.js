@@ -15,7 +15,7 @@
 
 class Scrollable {
 	constructor(options) {
-		this.settableBG = options.settableBG;
+		this.settableBG = options ? options.settableBG : '#fff';
 		this.b = document.body;
 		this.currentHeight = window.pageYOffset || window.scrollY;
 	}
@@ -33,12 +33,20 @@ class Scrollable {
 		return this.currentHeight;
 	}
 
+	toggleMenuOnScroll() {
+		if (this.getScrollHeight() > 81) {
+			this.setBodyClass('js--scrolled-menu');
+		} else {
+			this.setBodyClass('js--scrolled-menu', true);
+		}
+	}
+
 	init() {
 		document.addEventListener('scroll', () => {
-			if (this.getScrollHeight() > 81) {
-				this.setBodyClass('js--scrolled-menu');
-			}
+			this.toggleMenuOnScroll();
 		});
+
+		this.toggleMenuOnScroll();
 	}
 }
 

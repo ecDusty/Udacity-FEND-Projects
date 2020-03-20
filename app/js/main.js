@@ -17,3 +17,8 @@ import '../components/ie-check/ieCheck';
 import '../components/header/header';
 import '../components/forms/forms';
 import '../components/swiper/favorites';
+
+import Scrollable from '../components/project-2/scrollable';
+
+const scrollFunc = new Scrollable();
+scrollFunc.init();
