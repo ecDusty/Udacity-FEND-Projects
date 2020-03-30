@@ -29,6 +29,7 @@ const swiper = new Swiper('.swiper-container', {
 	},
 
 	// Lazy load images
+	preloadImages: false,
 	lazy: {
 		loadPrevNext: true,
 		loadOnTransitionStart: true
