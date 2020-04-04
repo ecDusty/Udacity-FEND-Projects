@@ -43,6 +43,10 @@
 		@include makeBtn(#{$secondary}, #{$info}, #{$danger}, #{$link-active})
 	}
 
+	// &-header-nav {
+
+	// }
+
 	&::after {
 		content: "";
 		position: absolute;

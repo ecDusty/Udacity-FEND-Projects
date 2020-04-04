@@ -12,7 +12,7 @@
 				<div class="card-img-bg bg-fade-secondary"></div>
 			</div>
 			<div class="card-content p-3">
-				<h3 class="card-title mb-2"><a href="{{ news.linkBase }}{{ item.url }}">{{ item.shortTitle }}</a></h3>
+				<h3 class="card-title mb-2">{% if item.url=='' %}{{ item.shortTitle }}{% else %}<a href="{{ news.linkBase }}{{ item.url }}">{{ item.shortTitle }}</a>{% endif %}</h3>
 				<div class="card-details">
 				{{ item.summary|safe }}
 				</div>
@@ -32,7 +32,7 @@
 				<div class="card-img-bg bg-fade-secondary"></div>
 			</div>
 			<div class="card-content p-3">
-				<h3 class="card-title mb-2"><a href="{{ news.linkBase }}{{ item.url }}">{{ item.shortTitle }}</a></h3>
+				<h3 class="card-title mb-2">{% if item.url=='' %}{{ item.shortTitle }}{% else %}<a href="{{ news.linkBase }}{{ item.url }}">{{ item.shortTitle }}</a>{% endif %}</h3>
 				<div class="card-details">
 				{{ item.summary|safe }}
 				</div>
@@ -50,7 +50,7 @@
 				<div class="card-img-bg bg-fade-secondary"></div>
 			</div>
 			<div class="card-content p-3">
-				<h3 class="card-title mb-2"><a href="{{ news.linkBase }}{{ item.url }}">{{ item.shortTitle }}</a></h3>
+				<h3 class="card-title mb-2">{% if item.url=='' %}{{ item.shortTitle }}{% else %}<a href="{{ news.linkBase }}{{ item.url }}">{{ item.shortTitle }}</a>{% endif %}</h3>
 				<div class="card-details">
 				{{ item.summary|safe }}
 				</div>
