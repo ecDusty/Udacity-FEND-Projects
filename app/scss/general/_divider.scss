@@ -1,0 +1,13 @@
+.divider {
+	&-line {
+		border-bottom-width: 2px;
+		margin: 40px 0;
+		padding: 10px 0 0;
+		width: 100%;
+		&-solid {
+			border-bottom-style: solid;
+		}
+		&-primary { border-bottom-color: rgba($primary, 0.55); }
+		&-secondary { border-bottom-color: rgba($secondary, 0.55); }
+	}
+}
