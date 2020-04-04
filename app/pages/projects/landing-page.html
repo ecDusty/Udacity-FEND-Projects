@@ -1,6 +1,6 @@
 {% extends "../templates/_layout.njk" %}
 
-{% set pageId = 1 %}
+{% set pageId = 10 %}
 
 {% block head %}
 	<title>{{ projects.list[pageId].title }} | {{ siteTitle }}</title>
@@ -8,7 +8,7 @@
 	<meta name="description" content="{{ projects.list[pageId].meta }}">
 {% endblock %}
 
-{% set pageId = 1 %}
+{% set projectId = 1 %}
 
 {% block body %}grid grid-row-main grid-col-main {% endblock %}
 
@@ -21,8 +21,8 @@
 {% block content %}
 <section class="bg-section bg-info">
 	<div class="px-3 px-md-4 px-lg-5">
-		<h1>{{ projects.list[pageId].shortTitle }}</h1>
-		<p>This page will cover the requirements for project 2 of the Udacity FEND program.</p>
+		<h1>{{ projects.list[projectId].shortTitle }}</h1>
+		<p>This page will cover the requirements for project 2 of the Udacity FEND program. I've built several interactive elements </p>
 	</div>
 	<div class="px-3 px-md-4 px-lg-5 my-3 mt-4 mt-md-5 js--interactive-heading-nav hidden">
 
@@ -31,10 +31,12 @@
 <section class="projects px-3 px-md-4 px-lg-5 js--interactive"
 	data-menu="true"
 	data-background="">
-	<h2 class="js--interactive-heading-nav-item">The First Section</h2>
-	<p>Lorem ipsum dolor sit amet, ea quot reque eam. Pro agam dicam mucius ex, id dico nostro aperiam eum. Utinam corpora petentium cu nec. Eius error sapientem in eam. Tempor oportere cum cu.</p>
-	<blockquote>Lorem ipsum dolor sit amet, ea quot reque eam. Pro agam dicam mucius ex</blockquote>
-	<p>Lorem ipsum dolor sit amet, ea quot reque eam. Pro agam dicam mucius ex, id dico nostro aperiam eum. Utinam corpora petentium cu nec. Eius error sapientem in eam. Tempor oportere cum cu.</p>
+	<div class="heading--sticky">
+		<h2 class="js--interactive-heading-nav-item">The First Section</h2>
+	</div>
+	<p>Lorem ipsum dolor sit amet, reque sensibus ius te. Eu sit recteque qualisque constituam, vix movet graeco latine ut, fugit expetenda sea an. Alterum nonumes maiestatis has ea, mei cu tollit exerci aliquid, ut duo noluisse partiendo. Timeam reprimique concludaturque mei in, ei per verterem moderatius, erat choro an vim. Id inani luptatum eleifend ius. Sea ne adipiscing consectetuer, in blandit appareat has. Accusam sapientem iudicabit ut mei, meliore lobortis similique et usu. Quot disputando te qui, id nam euismod probatus.</p>
+	<blockquote>Lorem ipsum dolor sit amet, ea quot reque eam. Pro agam dicam mucius ex. Eu vix quando nominavi appareat, fabulas intellegat sed no. Et his mutat novum malorum. Stet recteque cum ea, ut tritani equidem definitiones duo, his cu stet equidem.</blockquote>
+	<p>Quas viderer delicatissimi ad sit, persius saperet adipiscing ad eum, duo ei gubergren scriptorem eloquentiam. Alia scribentur usu ex, sea porro dictas deserunt te. Ei mea case numquam nonumes, has ex amet fastidii definitionem. Minim utroque perfecto est ne, et assum tantas malorum nam. Quot illum sed no, te per summo nonumes neglegentur. Nobis regione epicurei sit cu, te usu saperet consequat, nam viderer docendi iracundia an. Mei docendi torquatos temporibus ea, in platonem recteque evertitur duo. Mei facer sanctus sapientem et, in primis facilisis definiebas usu, eum meliore tincidunt vituperatoribus id. No veniam essent aliquam qui.</p>
 </section>
 {% endblock %}
 

@@ -23,23 +23,16 @@
 	padding-top: 10px;
 	padding-bottom: 10px;
 
-	@include media-breakpoint-up('sm') {
-		margin-top: 45px;
-		margin-bottom: 45px;
-	}
-
 	@include media-breakpoint-up('md') {
-		margin-top: 55px;
-		margin-bottom: 55px;
+		margin-top: 35px;
+		margin-bottom: 35px;
 		padding-top: 20px;
 		padding-bottom: 20px;
 	}
 
 	@include media-breakpoint-up('lg') {
-		margin-top: 70px;
-		margin-bottom: 70px;
-		padding-top: 25px;
-		padding-bottom: 25px;
+		margin-top: 50px;
+		margin-bottom: 50px;
 	}
 }
 
