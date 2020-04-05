@@ -12,6 +12,11 @@
 			transition: opacity 0.25s ease-out 1.4s;
 		}
 
+		&.lazyloaded {
+			opacity: 0;
+			& ~ .card-img-bg { opacity: 0; }
+		}
+
 		&-bg {
 			position: absolute;
 			width: 100%;
