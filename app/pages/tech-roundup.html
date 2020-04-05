@@ -1,6 +1,6 @@
 {% extends "../templates/_layout.njk" %}
 
-{% set pageId = 3 %}
+{% set pageId = 1 %}
 
 {% block head %}
 	<title>{{ pages[pageId].name }} | {{ siteTitle }}</title>
@@ -17,19 +17,19 @@
 {% block content %}
 <section class="articles">
 	<h1>{{ pages[pageId].name }}</h1>
-	<div class="container">
-		<div class="flex-row">
-			{{ card.renderCard(news, false, true, false) }}
-		</div>
+	<div class="flex-row">
+		{{ card.renderCard(news, false, true, false) }}
 	</div>
 </section>
 {% endblock %}
 
 {% block aside %}
 <aside class="aside">
-	<h3>Favorites</h3>
-	<div class="aside-favorites flex-row">
-		{{ card.renderCard(news, true, false, true)}}
+	<div class="aside-content position-sticky">
+		<h3>Favorites</h3>
+		<div class="aside-favorites flex-row">
+			{{ card.renderCard(news, true, false, true)}}
+		</div>
 	</div>
 </aside>
 {% endblock %}

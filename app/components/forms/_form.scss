@@ -21,6 +21,7 @@
 			position: absolute;
 			color: black;
 			font-weight: bold;
+			cursor: text;
 			top: 14px;
 			font-size: 130%;
 			left: 13px;
@@ -35,7 +36,7 @@
 			}
 		}
 
-		&:invalid, &.js--input-error {
+		&:invalid.js--filled, &.js--input-error {
 			box-shadow: 0 0 5px 2px #{$danger};
 			border-color: $danger;
 		}
@@ -44,6 +45,12 @@
 			transition: box-shadow 0.3s linear;
 			box-shadow: 0 0 3px 3px #{$primary};
 			border-color: $primary;
+		}
+	}
+
+	.content__gdprLegal {
+		p:last-child {
+			margin-bottom: 0;
 		}
 	}
 
