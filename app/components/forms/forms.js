@@ -8,6 +8,8 @@ const forms = [...document.querySelectorAll('.form')];
 
 forms.forEach((form) => {
 	const inputs = [...form.querySelectorAll('input'), ...form.querySelectorAll('textarea')];
+	const content = form.querySelector('.js--form-content');
+	const notifyEl = form.querySelector('.js--form-notify');
 	inputs.forEach((input) => {
 		input.addEventListener('input', () => {
 			if (input.value !== '' && !input.classList.contains('js--filled')) {
@@ -24,17 +26,24 @@ forms.forEach((form) => {
 
 		inputs.forEach((input) => {
 			if (input.attributes.required && (input.value === '' || !input.checked)) {
-				input.classList.add('js--input-error');
 				requiredMissing = true;
 			} else if (input.type === 'email') {
+				const parts = input.value.split('@');
+				const partTwo = parts[1] ? parts[1].split('.') : false;
 
+				requiredMissing = !(parts.length === 2);
+				requiredMissing = !(partTwo ? partTwo.length >= 2 : false);
+				requiredMissing = !(partTwo && !requiredMissing ? partTwo[1].length >= 2 : false);
 			}
+
+			if (requiredMissing) input.classList.add('js--input-error');
 		});
 
 		if (!requiredMissing) {
-			fetch('', {
+			// fetch('', {
 
-			});
+			// });
+			notifyEl.innerHTML = '<p>The form details haven\'t been submitted as the form submit script is still being written. All the best!</p>';
 		}
 	});
 });
