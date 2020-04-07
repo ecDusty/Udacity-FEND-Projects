@@ -4,7 +4,24 @@
  */
 const forms = [...document.querySelectorAll('.form')];
 
-// function check
+function checkInput(input) {
+	let inputRequiredMissing = false;
+	if (input.attributes.required && (input.value === '' || (input.type === 'checkbox' && !input.checked))) {
+		inputRequiredMissing = true;
+	} else if (input.type === 'email') {
+		const parts = input.value.split('@');
+		const partTwo = parts[1] ? parts[1].split('.') : false;
+
+		inputRequiredMissing = !(parts.length === 2);
+		inputRequiredMissing = !(partTwo && !inputRequiredMissing ? partTwo.length >= 2 : false);
+		inputRequiredMissing = !(partTwo && !inputRequiredMissing ? partTwo[1].length >= 2 : false);
+	}
+
+	if (inputRequiredMissing) input.classList.add('js--input-error');
+	else input.classList.remove('js--input-error');
+
+	return inputRequiredMissing;
+}
 
 forms.forEach((form) => {
 	const inputs = [...form.querySelectorAll('input'), ...form.querySelectorAll('textarea')];
@@ -20,30 +37,29 @@ forms.forEach((form) => {
 		});
 	});
 
+	inputs.forEach((input) => {
+		input.addEventListener('focusout', () => checkInput(input));
+	});
+
 	form.addEventListener('submit', (e) => {
 		e.preventDefault();
-		let requiredMissing = false;
 
-		inputs.forEach((input) => {
-			if (input.attributes.required && (input.value === '' || !input.checked)) {
-				requiredMissing = true;
-			} else if (input.type === 'email') {
-				const parts = input.value.split('@');
-				const partTwo = parts[1] ? parts[1].split('.') : false;
+		notifyEl.classList.add('hidden');
+		notifyEl.textContent = '';
+		notifyEl.classList.remove('text-danger');
 
-				requiredMissing = !(parts.length === 2);
-				requiredMissing = !(partTwo ? partTwo.length >= 2 : false);
-				requiredMissing = !(partTwo && !requiredMissing ? partTwo[1].length >= 2 : false);
-			}
 
-			if (requiredMissing) input.classList.add('js--input-error');
-		});
+		inputs.forEach((input) => checkInput(input));
 
-		if (!requiredMissing) {
+		if (!form.querySelector('.js--input-error')) {
 			// fetch('', {
 
 			// });
 			notifyEl.innerHTML = '<p>The form details haven\'t been submitted as the form submit script is still being written. All the best!</p>';
+		} else {
+			notifyEl.textContent = '*Please check that all inputs have been filled in correctly';
+			notifyEl.classList.add('text-danger');
+			notifyEl.classList.remove('hidden');
 		}
 	});
 });
