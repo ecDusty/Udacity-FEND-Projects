@@ -1,7 +1,7 @@
 {
   "name": "udacity-front-end-nano-degree-program",
   "version": "1.0.4",
-  "description": "A test to prove skills with using HTML & CSS code.",
+  "description": "A test to prove skills with using HTML, CSS, and JavaScript code.",
   "main": "gulpfile.babel.js",
   "scripts": {
     "dev": "gulp --env=localDev",
@@ -22,7 +22,7 @@
     "website"
   ],
   "author": "Erin Macalligan",
-  "license": "REFER TO FILE IN ROOT FOLDER, LICENSE.md",
+  "license": "",
   "bugs": {
     "url": "https://github.com/ecDusty/Udacity-FEND-Projects/issues"
   },
