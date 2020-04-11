@@ -17,6 +17,7 @@ class Scrollable {
 	constructor(options) {
 		this.settableBG = options ? options.settableBG : '#fff';
 		this.b = document.body;
+		this.scrolledClassName = 'js--scrolled-menu';
 		this.currentHeight = window.pageYOffset || window.scrollY;
 	}
 
@@ -34,10 +35,10 @@ class Scrollable {
 	}
 
 	toggleMenuOnScroll() {
-		if (this.getScrollHeight() > 81) {
-			this.setBodyClass('js--scrolled-menu');
+		if (this.getScrollHeight() > 81 && this.b.className.search(this.scrolledClassName) === -1) {
+			this.setBodyClass(this.scrolledClassName);
 		} else {
-			this.setBodyClass('js--scrolled-menu', true);
+			this.setBodyClass(this.scrolledClassName, true);
 		}
 	}
 

@@ -23,6 +23,16 @@ function checkInput(input) {
 	return inputRequiredMissing;
 }
 
+function formSuccess(content, notifyEl) {
+	const el = document.createElement('div');
+
+	content.remove();
+
+	el.innerHTML = '<p>The form details haven\'t been submitted as the form submit script is still being written. All the best!</p>';
+	notifyEl.appendsChild(el);
+	notifyEl.classList.remove('hidden');
+}
+
 forms.forEach((form) => {
 	const inputs = [...form.querySelectorAll('input'), ...form.querySelectorAll('textarea')];
 	const content = form.querySelector('.js--form-content');
@@ -55,7 +65,7 @@ forms.forEach((form) => {
 			// fetch('', {
 
 			// });
-			notifyEl.innerHTML = '<p>The form details haven\'t been submitted as the form submit script is still being written. All the best!</p>';
+			formSuccess(content, notifyEl);
 		} else {
 			notifyEl.textContent = '*Please check that all inputs have been filled in correctly';
 			notifyEl.classList.add('text-danger');
