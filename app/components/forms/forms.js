@@ -55,7 +55,6 @@ forms.forEach((form) => {
 		e.preventDefault();
 
 		notifyEl.classList.add('hidden');
-		notifyEl.textContent = '';
 		notifyEl.classList.remove('text-danger');
 
 
