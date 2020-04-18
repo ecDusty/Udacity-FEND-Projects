@@ -17,7 +17,10 @@ class Scrollable {
 	constructor(options) {
 		this.settableBG = options ? options.settableBG : '#fff';
 		this.b = document.body;
-		this.scrolledClassName = 'js--scrolled-menu';
+		this.className = {
+			scrolled: 'js--scrolled-menu',
+			backToTop: 'js--back-to-top'
+		};
 		this.currentHeight = window.pageYOffset || window.scrollY;
 	}
 
@@ -34,11 +37,23 @@ class Scrollable {
 		return this.currentHeight;
 	}
 
-	toggleMenuOnScroll() {
-		if (this.getScrollHeight() > 81 && this.b.className.search(this.scrolledClassName) === -1) {
-			this.setBodyClass(this.scrolledClassName);
+	toggleScrollToTopEl() {
+		if (this.getScrollHeight > 100) {
+			if (this.b.className.search(this.className.backToTop) === -1) {
+				this.setBodyClass(this.className.backToTop);
+			}
 		} else {
-			this.setBodyClass(this.scrolledClassName, true);
+			this.setBodyClass(this.className.backToTop, true);
+		}
+	}
+
+	toggleMenuOnScroll() {
+		if (this.getScrollHeight() > 81) {
+			if (this.b.className.search(this.className.scrolled) === -1) {
+				this.setBodyClass(this.className.scrolled);
+			}
+		} else {
+			this.setBodyClass(this.className.scrolled, true);
 		}
 	}
 
@@ -48,6 +63,7 @@ class Scrollable {
 		});
 
 		this.toggleMenuOnScroll();
+		this.toggleScrollToTopEl();
 	}
 }
 
