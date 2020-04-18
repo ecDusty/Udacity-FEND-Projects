@@ -19,9 +19,16 @@ class Scrollable {
 		this.b = document.body;
 		this.className = {
 			scrolled: 'js--scrolled-menu',
-			backToTop: 'js--back-to-top'
+			backToTop: 'js--backtotop',
+			backToTopTrig: 'js--backtotop-triggered',
+			backToTopStatic: 'js--backtotop-footer'
 		};
 		this.currentHeight = window.pageYOffset || window.scrollY;
+
+		// Back to top functionality
+		this.el = {
+			backToTop: document.querySelector(`.${this.className.backToTop}`)
+		};
 	}
 
 	setBodyClass(cssClass, remove) {
@@ -37,14 +44,28 @@ class Scrollable {
 		return this.currentHeight;
 	}
 
-	toggleScrollToTopEl() {
-		if (this.getScrollHeight > 100) {
-			if (this.b.className.search(this.className.backToTop) === -1) {
-				this.setBodyClass(this.className.backToTop);
+	toggleBackToTop() {
+		if (this.getScrollHeight() > 100) {
+			if (this.b.className.search(this.className.backToTopTrig) === -1) {
+				this.setBodyClass(this.className.backToTopTrig);
 			}
 		} else {
-			this.setBodyClass(this.className.backToTop, true);
+			this.setBodyClass(this.className.backToTopTrig, true);
 		}
+	}
+
+	setupBackToTop() {
+		this.el.backToTop.addEventListener('click', () => {
+			if (navigator.userAgent.toLowerCase().indexOf('safari') !== -1 && navigator.userAgent.toLowerCase().indexOf('chrome') === -1) {
+				window.scrollTo(0);
+			} else {
+				window.scrollTo({
+					top: 0,
+					left: 0,
+					behavior: 'smooth'
+				});
+			}
+		});
 	}
 
 	toggleMenuOnScroll() {
@@ -60,10 +81,15 @@ class Scrollable {
 	init() {
 		document.addEventListener('scroll', () => {
 			this.toggleMenuOnScroll();
+				this.toggleBackToTop();
 		});
 
 		this.toggleMenuOnScroll();
-		this.toggleScrollToTopEl();
+
+		if (this.el.backToTop) {
+			this.toggleBackToTop();
+			this.setupBackToTop();
+		}
 	}
 }
 
