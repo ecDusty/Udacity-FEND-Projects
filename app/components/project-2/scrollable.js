@@ -57,13 +57,10 @@ class Scrollable {
 
 		// Check scroll position of browser, if BTP aligns with footer, set class to static
 		if (this.getScrollHeight() + window.innerHeight >= this.el.footer.offsetTop) {
-			console.log(this.getScrollHeight() + window.innerHeight);
-			console.log(this.el.footer.offsetTop);
 			this.setBodyClass(this.className.backToTopStatic);
 		} else {
 			this.setBodyClass(this.className.backToTopStatic, true);
 		}
-
 	}
 
 	setupBackToTop() {
