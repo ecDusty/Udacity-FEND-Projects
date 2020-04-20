@@ -27,6 +27,7 @@ class Scrollable {
 
 		// Back to top functionality
 		this.el = {
+			footer: document.querySelector('footer'),
 			backToTop: document.querySelector(`.${this.className.backToTop}`)
 		};
 	}
@@ -45,6 +46,7 @@ class Scrollable {
 	}
 
 	toggleBackToTop() {
+		// Check scroll positon, of past header height, show BTP button
 		if (this.getScrollHeight() > 100) {
 			if (this.b.className.search(this.className.backToTopTrig) === -1) {
 				this.setBodyClass(this.className.backToTopTrig);
@@ -52,6 +54,16 @@ class Scrollable {
 		} else {
 			this.setBodyClass(this.className.backToTopTrig, true);
 		}
+
+		// Check scroll position of browser, if BTP aligns with footer, set class to static
+		if (this.getScrollHeight() + window.innerHeight >= this.el.footer.offsetTop) {
+			console.log(this.getScrollHeight() + window.innerHeight);
+			console.log(this.el.footer.offsetTop);
+			this.setBodyClass(this.className.backToTopStatic);
+		} else {
+			this.setBodyClass(this.className.backToTopStatic, true);
+		}
+
 	}
 
 	setupBackToTop() {
@@ -81,7 +93,9 @@ class Scrollable {
 	init() {
 		document.addEventListener('scroll', () => {
 			this.toggleMenuOnScroll();
+			if (this.el.backToTop) {
 				this.toggleBackToTop();
+			}
 		});
 
 		this.toggleMenuOnScroll();
