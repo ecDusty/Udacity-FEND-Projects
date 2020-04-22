@@ -13,6 +13,8 @@
  * @todo [ ] Improve scroll function, as current one is experimental, and won't work for IE.
  */
 
+import HeadersMenu from './menu-builder';
+
 class Scrollable {
 	constructor(options) {
 		this.settableBG = options ? options.settableBG : '#fff';
@@ -30,6 +32,11 @@ class Scrollable {
 			footer: document.querySelector('footer'),
 			backToTop: document.querySelector(`.${this.className.backToTop}`)
 		};
+
+		this.headMenuBuilder = new HeadersMenu({
+			headers: '.js--headers-menu-item',
+			mContainer: '.js--headers-menu'
+		});
 	}
 
 	setBodyClass(cssClass, remove) {
@@ -93,6 +100,10 @@ class Scrollable {
 			if (this.el.backToTop) {
 				this.toggleBackToTop();
 			}
+
+			if (this.headMenuBuilder.setupCheck()) {
+				this.headMenuBuilder.checkHeadersScrolled();
+			}
 		});
 
 		this.toggleMenuOnScroll();
@@ -101,6 +112,9 @@ class Scrollable {
 			this.toggleBackToTop();
 			this.setupBackToTop();
 		}
+
+		// Start header menu builder
+		this.headMenuBuilder.init();
 	}
 }
 

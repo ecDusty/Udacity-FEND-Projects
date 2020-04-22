@@ -1,0 +1,33 @@
+.HeadersMenu {
+	&__Title {
+		margin-bottom: 0;
+	}
+
+	&__List {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0;
+		margin: 0 -15px;
+	}
+
+	&__Item {
+		position: relative;
+		border: 2px solid $primary;
+		margin: 15px;
+		cursor: pointer;
+		padding: 7px 10px;
+		font-weight: bold;
+		color: $white;
+		background: $secondary;
+		box-shadow: 5px 5px 0 $primary;
+		transition: all 0.2s ease;
+		top:0;
+		left: 0;
+
+		&:hover {
+			top: 5px;
+			left: 5px;
+			box-shadow: 0 0 0 $primary;
+		}
+	}
+}
