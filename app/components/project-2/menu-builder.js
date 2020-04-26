@@ -21,7 +21,7 @@ class HeadersMenuBuilder {
 		this.mContainer = options.mContainer ? document.querySelector(options.mContainer) : document.querySelector('.js--headers-menu');
 
 		this.class = {
-			scrolled: 'heading--sticky-scrolled'
+			scrolled: 'js--headers-menu-item--scrolled'
 		};
 		// this.speed = options.speed ? options.speed : 450;
 	}
@@ -36,12 +36,11 @@ class HeadersMenuBuilder {
 	}
 
 	checkHeadersScrolled() {
-		const self = this;
 		const scrollHeight = this.getScrollHeight();
 
 		this.headers.forEach((header) => {
-			if (header.offsetTop <= scrollHeight) header.classList.add(self.class.scrolled);
-			else header.classList.remove(self.class.scrolled);
+			if (header.offsetTop <= scrollHeight) header.dataset.scrolled = 'true';
+			else header.dataset.scrolled = 'false';
 		});
 	}
 
