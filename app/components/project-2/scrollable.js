@@ -14,6 +14,7 @@
  */
 
 import HeadersMenu from './menu-builder';
+import ScrollableBackground from './background-charger';
 
 class Scrollable {
 	constructor(options) {
@@ -36,6 +37,10 @@ class Scrollable {
 		this.headMenuBuilder = new HeadersMenu({
 			headers: '.js--headers-menu-item',
 			mContainer: '.js--headers-menu'
+		});
+
+		this.scrollableBackground = new ScrollableBackground({
+			selector: '.js--scroll-background'
 		});
 	}
 
@@ -104,6 +109,10 @@ class Scrollable {
 			if (this.headMenuBuilder.setupCheck()) {
 				this.headMenuBuilder.checkHeadersScrolled();
 			}
+
+			if (this.scrollableBackground.working) {
+				this.scrollableBackground.checkBackgroundSet();
+			}
 		});
 
 		this.toggleMenuOnScroll();
@@ -115,6 +124,9 @@ class Scrollable {
 
 		// Start header menu builder
 		this.headMenuBuilder.init();
+
+		// Start Background builder
+		this.scrollableBackground.init();
 	}
 }
 
