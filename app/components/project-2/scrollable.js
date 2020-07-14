@@ -14,7 +14,7 @@
  */
 
 import HeadersMenu from './menu-builder';
-import ScrollableBackground from './background-charger';
+// import ScrollableBackground from './background-charger';
 
 class Scrollable {
 	constructor(options) {
@@ -39,9 +39,9 @@ class Scrollable {
 			mContainer: '.js--headers-menu'
 		});
 
-		this.scrollableBackground = new ScrollableBackground({
-			selector: '.js--scroll-background'
-		});
+		// this.scrollableBackground = new ScrollableBackground({
+		// 	selector: '.js--scroll-background'
+		// });
 	}
 
 	setBodyClass(cssClass, remove) {
@@ -76,13 +76,13 @@ class Scrollable {
 	}
 
 	setupBackToTop() {
-		this.el.backToTop.addEventListener('click', () => {
+		this.el.backToTop.addEventListener('click', (e) => {
+			e.preventDefault();
 			if (navigator.userAgent.toLowerCase().indexOf('safari') !== -1 && navigator.userAgent.toLowerCase().indexOf('chrome') === -1) {
-				window.scrollTo(0);
+				window.scroll(0, 0);
 			} else {
 				window.scrollTo({
 					top: 0,
-					left: 0,
 					behavior: 'smooth'
 				});
 			}
@@ -110,9 +110,9 @@ class Scrollable {
 				this.headMenuBuilder.checkHeadersScrolled();
 			}
 
-			if (this.scrollableBackground.working) {
-				this.scrollableBackground.checkBackgroundSet();
-			}
+			// if (this.scrollableBackground.working) {
+			// 	this.scrollableBackground.checkBackgroundSet();
+			// }
 		});
 
 		this.toggleMenuOnScroll();
@@ -126,7 +126,7 @@ class Scrollable {
 		this.headMenuBuilder.init();
 
 		// Start Background builder
-		this.scrollableBackground.init();
+		// this.scrollableBackground.init();
 	}
 }
 

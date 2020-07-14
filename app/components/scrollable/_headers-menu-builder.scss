@@ -28,6 +28,11 @@
 			top: 5px;
 			left: 5px;
 			box-shadow: 0 0 0 $primary;
+			background: $warning;
+		}
+
+		&--active {
+			background: $success;
 		}
 	}
 }

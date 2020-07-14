@@ -1,12 +1,21 @@
 .Article {
+	&__Section {
+		position: relative;
+		background-color: #fff;
+		transition: background 0.2s ease;
+
+		&--scrolled {
+			background-color: $gray-300;
+		}
+	}
+
 	&__Heading {
-		&Wrapper {
-			&--sticky {
-				position: sticky;
-				top: 0;
-				z-index: 2;
-				transform: scale(1);
-			}
+		background-color: inherit;
+		&--sticky {
+			position: sticky;
+			top: 0;
+			z-index: 2;
+			transform: scale(1);
 		}
 	}
 }
