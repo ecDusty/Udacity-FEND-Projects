@@ -57,7 +57,7 @@ class HeadersMenuBuilder {
 			item => item.classList.remove(this.class.headerMenuActive)
 		);
 
-		if (!isNaN(i)) {
+		if (!i === 'false') {
 			this.headersMenu[i].classList.add(this.class.headerMenuActive);
 		}
 	}
@@ -79,7 +79,7 @@ class HeadersMenuBuilder {
 				section.classList.remove(this.class.sectionScrolled);
 
 				if (i === 0) {
-					this.setActiveHeaderMenu();
+					this.setActiveHeaderMenu('false');
 				}
 			}
 		});
@@ -123,7 +123,9 @@ class HeadersMenuBuilder {
 		if (this.setupCheck()) {
 			this.createMenuLinks();
 
-			this.checkHeadersScrolled();
+			window.addEventListener('DOMContentLoaded', () => {
+				this.checkHeadersScrolled();
+			});
 		}
 	}
 }
