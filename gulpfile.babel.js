@@ -309,7 +309,7 @@ exports.default = series(
 // Live site builder
 exports.production = series(
 	cleanUp,
-	parallel(css, js, jsVendor, html, images, fonts)
+	parallel(css, js, jsVendor, html, images, favicon, fonts)
 );
 
 // HTML generator

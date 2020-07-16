@@ -55,15 +55,30 @@ const swiper = new Swiper('.swiper-container', {
 		},
 		768: {
 			slidesPerView: 2,
-			spaceBetween: 30
+			spaceBetween: 30,
+			lazy: {
+				loadPrevNext: true,
+				loadPrevNextAmount: 2,
+				loadOnTransitionStart: true
+			}
 		},
 		1050: {
 			slidesPerView: 3,
-			spaceBetween: 30
+			spaceBetween: 30,
+			lazy: {
+				loadPrevNext: true,
+				loadPrevNextAmount: 3,
+				loadOnTransitionStart: true
+			}
 		},
 		1350: {
 			slidesPerView: 4,
-			spaceBetween: 30
+			spaceBetween: 30,
+			lazy: {
+				loadPrevNext: true,
+				loadPrevNextAmount: 3,
+				loadOnTransitionStart: true
+			}
 		}
 	}
 });

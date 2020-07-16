@@ -9,6 +9,12 @@
 		&-slide {
 			.card {
 				opacity: 0.3;
+
+				&-img {
+					&.swiper-lazy-loaded {
+						opacity: 1;
+					}
+				}
 			}
 
 			&-visible {
