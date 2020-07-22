@@ -29,6 +29,10 @@
 			transition: font-size 0.25s ease-out, top 0.25s ease-out;
 		}
 
+		&[type="date"] ~ label {
+			top: 7px;
+		}
+
 		&:focus ~, &.js--filled ~ {
 			label {
 				font-size: 90%;

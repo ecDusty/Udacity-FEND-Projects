@@ -1,4 +1,4 @@
-/*!
+/**
  * NAVIGATION Styles
  */
 .nav {
@@ -112,14 +112,14 @@
 		}
 	}
 
-	/*!
+	/**
 	 * TABLET STYLES
 	 */
 
 	@include media-breakpoint-up('sm') {
 	}
 
-	/*!
+	/**
 	 * DESKTOP STYLES
 	 */
 	@include media-breakpoint-up('lg') {

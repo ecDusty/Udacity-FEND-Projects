@@ -119,7 +119,7 @@
 	}
 }
 
-/*!
+/**
 	Flex Columns Setup
 */
 // Col mixin
@@ -189,6 +189,12 @@
 		width: 100%;
 		max-width: 100%;
 		flex-basis: 100%;
+	}
+
+	&50 {
+		width: 50%;
+		max-width: 50%;
+		flex-basis: 50%;
 	}
 }
 // END OF FLEX STYLES

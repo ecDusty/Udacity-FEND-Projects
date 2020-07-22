@@ -51,7 +51,6 @@ import pngquant from 'imagemin-pngquant';
 import htmlmin from 'gulp-htmlmin';
 import nunjucksRender from 'gulp-nunjucks-render';
 
-
 /**
  * Configuration Object
  * any arguments & settings for gulp to run
@@ -66,7 +65,6 @@ const config = {
 	syncWatching: false,
 	nunjucks: {}
 };
-
 
 // Config BrowserSync config object
 config.browserSync = {
@@ -86,7 +84,6 @@ config.nunjucks.templates = [`${config.app}templates`];
  */
 log(colors.cyan('config.env: '), config.env);
 log(colors.cyan('config.browserSync: '), config.browserSync);
-
 
 /**
  * All Function Names Declaration
@@ -111,18 +108,15 @@ log(colors.cyan('config.browserSync: '), config.browserSync);
  * @watchFiles - Watch for source file changes, and trigger a recreate & resync.
  */
 
-
 /**
  * In case of no action needed, run nada()
  */
 const nada = () => through.obj();
 
-
 /**
  * Server
  */
 const initBrowserSync = () => browserSync.init(config.browserSync);
-
 
 /**
  * Styles
@@ -141,7 +135,7 @@ const css = () =>
 		.pipe(sourcemaps.identityMap())
 		.pipe(sass
 			.sync({
-				sourceComments: true,
+				sourceComments: config.env !== 'production',
 				includePaths: ['node_modules/'],
 			})
 			.on('error', function errorHandler(err) {
@@ -165,7 +159,6 @@ const css = () =>
 		.pipe(config.env === 'localDev'
 			? browserSync.stream()
 			: nada());
-
 
 /**
  * JAVASCRIPT COMPILING
@@ -206,7 +199,6 @@ const js = () =>
 		.pipe(config.env === 'localDev'
 			? browserSync.stream()
 			: nada());
-
 
 /**
  * IMAGE COMPILING
@@ -256,7 +248,6 @@ const html = () =>
 		.pipe(dest(`${config.dist}`))
 		.pipe(config.env === 'localDev' ? browserSync.stream() : nada());
 
-
 /**
  * Fonts
  */
@@ -266,12 +257,10 @@ const fonts = () =>
 		.pipe(dest(`${config.distApp}fonts/`))
 		.pipe(config.env === 'localDev' ? browserSync.stream() : nada());
 
-
 /**
  * Clean up files & folders
  */
 const cleanUp = () => del(`${config.dist}`);
-
 
 /**
 * Watch
@@ -292,7 +281,6 @@ function watchFiles() {
 	watch(`${config.app}**/*.scss`, series(css));
 	watch(`${config.app}**/*.js`, series(js, jsVendor));
 }
-
 
 /**
  * Gulp executables
